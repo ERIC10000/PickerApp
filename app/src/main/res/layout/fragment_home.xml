@@ -1,0 +1,320 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".HomeFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:gravity="center_vertical"
+            android:layout_marginStart="20dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="18dp"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    android:text="Discover"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="16dp"
+                    android:text="The Power of Clean Environment"/>
+
+
+
+
+            </LinearLayout>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                app:cardCornerRadius="100dp"
+                android:layout_marginEnd="20dp"
+                app:cardElevation="10dp">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/profile"/>
+
+
+            </androidx.cardview.widget.CardView>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                app:cardCornerRadius="5dp"
+                app:cardElevation="0dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/g_blue">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/menu_icon"
+                        android:padding="5dp"/>
+
+
+                </LinearLayout>
+
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                app:cardCornerRadius="5dp"
+                android:layout_marginStart="10dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Search Here For Contents"
+                        android:layout_marginStart="10dp"
+                        android:layout_weight="1"/>
+
+                    <ImageView
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:src="@drawable/baseline_search_24"
+                        android:layout_marginEnd="10dp"/>
+
+
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+
+        </LinearLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/profileCard"
+            android:layout_marginTop="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/tvProfile"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="My Profile ID"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginBottom="20dp"/>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardView"
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="40dp"
+                android:layout_marginEnd="30dp"
+                app:cardBackgroundColor="#0000FF"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="15dp"
+                android:alpha="0.8"
+                app:layout_constraintEnd_toEndOf="@id/tvProfile"
+                app:layout_constraintStart_toStartOf="@id/tvProfile"
+                app:layout_constraintTop_toBottomOf="@id/tvProfile">
+
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/idcard"
+                        android:layout_marginTop="20dp"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        app:cardCornerRadius="10dp"
+                        android:layout_marginEnd="20dp"
+                        app:cardElevation="10dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        android:layout_marginStart="20dp"
+                        app:layout_constraintDimensionRatio="1:1"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:scaleType="fitXY"
+                            android:src="@drawable/profile"/>
+
+
+                    </androidx.cardview.widget.CardView>
+
+                    <TextView
+                        android:id="@+id/cardTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="National \n Clean Cities \n Program"
+                        android:textColor="@color/white"
+                        android:textSize="18dp"
+                        android:textStyle="bold"
+                        android:fontFamily="@font/sf_pro_display"
+                        android:layout_marginTop="15dp"
+                        app:layout_constraintStart_toEndOf="@id/idcard"
+                        app:layout_constraintTop_toTopOf="parent"
+                        android:layout_marginStart="12dp"/>
+
+                    <TextView
+                        android:id="@+id/cardID"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Member ID : WMS/NRB/012 "
+                        android:textColor="@color/white"
+                        android:textSize="16dp"
+                        android:fontFamily="@font/sf_pro_display"
+                        app:layout_constraintTop_toBottomOf="@id/idcard"
+                        android:layout_marginTop="5dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        android:layout_marginStart="12dp"/>
+
+                    <TextView
+                        android:id="@+id/cardName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Name: Derrick Wanjala"
+                        android:textColor="@color/white"
+                        android:textSize="16dp"
+                        android:fontFamily="@font/sf_pro_display"
+                        app:layout_constraintTop_toBottomOf="@id/cardID"
+                        android:layout_marginTop="5dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        android:layout_marginStart="12dp"/>
+
+                    <TextView
+                        android:id="@+id/cardLocation"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="County: Nairobi"
+                        android:textColor="@color/white"
+                        android:textSize="16dp"
+                        android:fontFamily="@font/sf_pro_display"
+                        app:layout_constraintTop_toBottomOf="@id/cardName"
+                        android:layout_marginTop="5dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        android:layout_marginStart="12dp"/>
+
+                    <TextView
+                        android:id="@+id/cardConst"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Constituency : Kibera"
+                        android:textColor="@color/white"
+                        android:textSize="16dp"
+                        android:fontFamily="@font/sf_pro_display"
+                        app:layout_constraintTop_toBottomOf="@id/cardLocation"
+                        android:layout_marginTop="5dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        android:layout_marginStart="12dp"/>
+
+                    <TextView
+                        android:id="@+id/cardDate"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Sept, 2023"
+                        android:textColor="@color/white"
+                        android:textSize="18dp"
+                        android:fontFamily="@font/sf_pro_display"
+                        app:layout_constraintTop_toBottomOf="@id/cardLocation"
+                        android:layout_marginTop="5dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        android:textStyle="bold"
+                        android:layout_marginEnd="12dp"
+                        android:layout_marginStart="12dp"/>
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/qrCode"
+                        android:layout_marginTop="20dp"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        app:cardCornerRadius="10dp"
+                        android:layout_marginEnd="20dp"
+                        android:layout_marginLeft="10dp"
+                        app:cardElevation="10dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        android:layout_marginStart="20dp"
+                        app:layout_constraintDimensionRatio="1:1"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:scaleType="fitXY"
+                            android:src="@drawable/qr2" />
+
+
+                    </androidx.cardview.widget.CardView>
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            </androidx.cardview.widget.CardView>
+
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_login"
+                style="@style/blueButtonStyle"
+                android:layout_width="0dp"
+                android:layout_height="55dp"
+                android:fontFamily="@font/poppins_thin"
+                android:text="Download"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="50dp"
+                android:layout_marginTop="100dp"
+                android:textColor="@color/white"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cardView" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </LinearLayout>
+
+</FrameLayout>
