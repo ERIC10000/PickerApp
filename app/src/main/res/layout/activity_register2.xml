@@ -26,7 +26,7 @@
             android:drawableStart="@drawable/ic_app_logo"
             android:drawablePadding="6dp"
             android:textStyle="bold"
-            android:text="Clean Earth."
+            android:text="WAPAK I.M.S"
             app:layout_constraintStart_toStartOf="@id/guidelineLeft"
             app:layout_constraintEnd_toEndOf="@id/guidelineRight"
             app:layout_constraintTop_toTopOf="parent"/>
@@ -85,27 +85,23 @@
             android:layout_marginTop="25dp"/>
 
 
-        <ImageView
-            android:id="@+id/textIcon"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/arrow_right"
-            android:paddingEnd="50dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginBottom="20dp"/>
-
-        <TextView
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/next2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="200dp"
+            android:layout_height="55dp"
+            style="@style/blueButtonStyle"
+            android:fontFamily="@font/poppins_thin"
             android:text="Next"
-            app:layout_constraintStart_toStartOf="@id/textIcon"
-            app:layout_constraintEnd_toEndOf="@id/textIcon"
-            android:textColor="#0000FF"
-            app:layout_constraintBottom_toBottomOf="@id/textIcon"
-            app:layout_constraintTop_toTopOf="@id/textIcon"
-            />
+            android:layout_marginTop="5dp"
+            android:drawableRight="@drawable/arrow_right"
+            android:drawableTint="@color/white"
+            android:drawablePadding="8dp"
+            android:padding="8dp"
+            android:textColor="@color/white"
+            app:layout_constraintEnd_toEndOf="@id/guidelineRight"
+            app:layout_constraintStart_toStartOf="@id/guidelineLeft"
+            app:layout_constraintTop_toBottomOf="@id/idNumber"
+            app:layout_constraintBottom_toBottomOf="parent"/>
 
 
 

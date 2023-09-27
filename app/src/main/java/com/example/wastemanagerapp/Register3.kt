@@ -5,16 +5,16 @@ import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
-import android.widget.EditText
-import android.widget.ProgressBar
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
+import androidx.appcompat.app.AlertDialog
 import com.example.wastemanagerapp.helpers.ApiHelper
 import com.example.wastemanagerapp.helpers.Constant
 import com.example.wastemanagerapp.helpers.PrefsHelper
 import org.json.JSONArray
 import org.json.JSONObject
+
 
 class Register3 : AppCompatActivity() {
     lateinit var address : EditText
@@ -66,10 +66,24 @@ class Register3 : AppCompatActivity() {
 
             override fun onSuccess(result: JSONObject?) {
                 progressBar.visibility = View.GONE
-                val intent = Intent(applicationContext , HomeActivity::class.java)
-                intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-                startActivity(intent)
-                finish()
+//                val intent = Intent(applicationContext , HomeActivity::class.java)
+//                intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+//                startActivity(intent)
+//                finish()
+
+                val alertDialog = AlertDialog.Builder(this@Register3).create()
+                alertDialog.setTitle("")
+                val view =
+                    LayoutInflater.from(this@Register3).inflate(R.layout.payment_alert_dialog, null, false)
+                alertDialog.setView(view)
+
+                view.findViewById<Button>(R.id.pay).setOnClickListener {
+                    val intent = Intent(applicationContext, LoginActivity::class.java)
+                    startActivity(intent)
+                    alertDialog.dismiss()
+                }
+
+                alertDialog.show()
             }
 
             override fun onFailure(result: String?) {
@@ -80,3 +94,5 @@ class Register3 : AppCompatActivity() {
 
 
 }
+
+

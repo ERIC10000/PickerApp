@@ -26,7 +26,7 @@
             android:drawableStart="@drawable/ic_app_logo"
             android:drawablePadding="6dp"
             android:textStyle="bold"
-            android:text="Clean Earth."
+            android:text="WAPAK I.M.S"
             app:layout_constraintStart_toStartOf="@id/guidelineLeft"
             app:layout_constraintEnd_toEndOf="@id/guidelineRight"
             app:layout_constraintTop_toTopOf="parent"/>
@@ -85,30 +85,30 @@
             app:layout_constraintTop_toBottomOf="@id/password2"
             android:layout_marginTop="40dp"/>
 
-
-
-
-        <ImageView
-            android:id="@+id/textIcon"
+        <androidx.appcompat.widget.AppCompatCheckBox
+            android:id="@+id/agreement"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/arrow_right"
-            android:paddingEnd="50dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginBottom="30dp"/>
+            android:layout_marginTop="8dp"
+            android:text="Agree to the Terms and Conditions"
+            android:textColor="@color/g_blue"
 
-        <TextView
+            app:layout_constraintStart_toStartOf="@id/guidelineLeft"
+            app:layout_constraintTop_toBottomOf="@id/password2"/>
+
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/next3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Next"
-            app:layout_constraintStart_toStartOf="@id/textIcon"
-            app:layout_constraintEnd_toEndOf="@id/textIcon"
-            android:textColor="#0000FF"
-            app:layout_constraintBottom_toBottomOf="@id/textIcon"
-            app:layout_constraintTop_toTopOf="@id/textIcon"
-            />
+            android:layout_width="200dp"
+            android:layout_height="55dp"
+            style="@style/blueButtonStyle"
+            android:fontFamily="@font/poppins_thin"
+            android:text="Finish"
+            android:layout_marginTop="5dp"
+            android:textColor="@color/white"
+            app:layout_constraintEnd_toEndOf="@id/guidelineRight"
+            app:layout_constraintStart_toStartOf="@id/guidelineLeft"
+            app:layout_constraintTop_toBottomOf="@id/agreement"
+            app:layout_constraintBottom_toBottomOf="parent"/>
 
 
 

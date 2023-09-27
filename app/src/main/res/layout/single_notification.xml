@@ -2,7 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="20dp"
+    android:padding="10dp"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <com.google.android.material.card.MaterialCardView
@@ -84,6 +84,7 @@
                 android:textColor="@color/black"/>
 
             <TextView
+                android:id="@+id/textMessageBody"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Please Visit Your Neasrest Station, we will be conducting am metting.Please Visit Your Neasrest Station, we will be conducting am metting"

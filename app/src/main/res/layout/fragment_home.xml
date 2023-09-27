@@ -250,7 +250,7 @@
                         android:id="@+id/cardConst"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Constituency : Kibera"
+                        android:text=" Ward : Imara Daima"
                         android:textColor="@color/white"
                         android:textSize="16dp"
                         android:fontFamily="@font/sf_pro_display"

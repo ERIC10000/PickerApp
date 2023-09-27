@@ -20,17 +20,8 @@ class HomeActivity : AppCompatActivity() {
                     replaceFragment(HomeFragment())
                 }
 
-                R.id.search -> {
-                    replaceFragment(SearchFragment())
-                }
-
-
-                R.id.cart -> {
-                    replaceFragment(NotificationFragment())
-                }
-
                 R.id.profile -> {
-                    replaceFragment(ProfileFragment())
+                    replaceFragment(NotificationFragment())
                 }
 
             } // end when

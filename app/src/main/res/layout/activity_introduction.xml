@@ -72,7 +72,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         style="@style/h4"
-        android:text="The Right \n Address \n For Waste \n Management"
+        android:text="Waste Pickers \n Association \n of Kenya. "
         android:layout_marginTop="115dp"
         app:layout_constraintTop_toTopOf="@id/guidelineLeft"
         app:layout_constraintStart_toStartOf="@id/img_ellipse"

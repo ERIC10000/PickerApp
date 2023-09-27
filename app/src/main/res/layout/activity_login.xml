@@ -26,7 +26,7 @@
             android:drawableStart="@drawable/ic_app_logo"
             android:drawablePadding="6dp"
             android:textStyle="bold"
-            android:text="Clean Earth."
+            android:text="WAPAK I.M.S"
             app:layout_constraintStart_toStartOf="@id/guidelineLeft"
 
             app:layout_constraintTop_toTopOf="parent"/>

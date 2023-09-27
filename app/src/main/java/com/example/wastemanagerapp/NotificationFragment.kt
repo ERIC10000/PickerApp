@@ -5,55 +5,47 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.example.wastemanagerapp.adapters.NotificationAdapter
+import com.example.wastemanagerapp.models.Notification
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [NotificationFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class NotificationFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
+    lateinit var recyclerView: RecyclerView
+    lateinit var notificationAdapter: NotificationAdapter
+    lateinit var itemList : List<Notification>
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_notification, container, false)
+        val view = inflater.inflate(R.layout.fragment_notification, container, false)
+        recyclerView = view.findViewById(R.id.recylerView)
+        notificationAdapter = NotificationAdapter(notification())
+        recyclerView.layoutManager = LinearLayoutManager(requireContext())
+        recyclerView.adapter = notificationAdapter
+        return view
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment NotificationFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            NotificationFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
+    fun notification(): List<Notification>{
+        itemList =  listOf(
+            Notification( "12:00", "General Meeting", "Manager", "Please lets meet for a metting happening " +
+                    "during lunch time, remember to bring your Member IDS"),
+            Notification( "14:00", "Brief Meeting", "Manager", "Please lets meet for a metting happening " +
+                    "during lunch time, remember to bring your Member IDS"),
+            Notification( "00:16", "CEO Meeting", "Manager", "Please lets meet for a metting happening " +
+                    "during lunch time, remember to bring your Member IDS"),
+            Notification( "18:00", "Board Meeting", "Manager", "Please lets meet for a metting happening " +
+                    "during lunch time, remember to bring your Member IDS"),
+            Notification( "12:09", "Brief Meeting", "Manager", "Please lets meet for a metting happening " +
+                    "during lunch time, remember to bring your Member IDS"),
+        )
+
+        return itemList
     }
+
 }
