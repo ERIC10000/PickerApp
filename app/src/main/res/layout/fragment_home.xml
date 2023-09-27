@@ -146,7 +146,7 @@
             <androidx.cardview.widget.CardView
                 android:id="@+id/cardView"
                 android:layout_width="match_parent"
-                android:layout_height="250dp"
+                android:layout_height="300dp"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="40dp"
                 android:layout_marginEnd="30dp"
@@ -157,6 +157,13 @@
                 app:layout_constraintEnd_toEndOf="@id/tvProfile"
                 app:layout_constraintStart_toStartOf="@id/tvProfile"
                 app:layout_constraintTop_toBottomOf="@id/tvProfile">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/waste_logo2"
+                    android:scaleType="centerCrop"
+                    android:alpha="0.3"/>
 
 
                 <androidx.constraintlayout.widget.ConstraintLayout
@@ -190,7 +197,7 @@
                         android:id="@+id/cardTitle"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="National \n Clean Cities \n Program"
+                        android:text="WASTE PICKERS \n ASSOCIATION \n OF KENYA"
                         android:textColor="@color/white"
                         android:textSize="18dp"
                         android:textStyle="bold"
@@ -204,7 +211,7 @@
                         android:id="@+id/cardID"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Member ID : WMS/NRB/012 "
+                        android:text="Member ID : WAPAK/WPR/012"
                         android:textColor="@color/white"
                         android:textSize="16dp"
                         android:fontFamily="@font/sf_pro_display"
@@ -253,6 +260,32 @@
                         android:layout_marginStart="12dp"/>
 
                     <TextView
+                        android:id="@+id/nationalID"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="National ID : 24367547"
+                        android:textColor="@color/white"
+                        android:textSize="16dp"
+                        android:fontFamily="@font/sf_pro_display"
+                        app:layout_constraintTop_toBottomOf="@id/cardConst"
+                        android:layout_marginTop="5dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        android:layout_marginStart="12dp"/>
+
+                    <TextView
+                        android:id="@+id/telephoneNo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=" Tel : 0712345678"
+                        android:textColor="@color/white"
+                        android:textSize="16dp"
+                        android:fontFamily="@font/sf_pro_display"
+                        app:layout_constraintTop_toBottomOf="@id/nationalID"
+                        android:layout_marginTop="5dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        android:layout_marginStart="12dp"/>
+
+                    <TextView
                         android:id="@+id/cardDate"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -260,7 +293,7 @@
                         android:textColor="@color/white"
                         android:textSize="18dp"
                         android:fontFamily="@font/sf_pro_display"
-                        app:layout_constraintTop_toBottomOf="@id/cardLocation"
+                        app:layout_constraintTop_toBottomOf="@id/nationalID"
                         android:layout_marginTop="5dp"
                         app:layout_constraintEnd_toEndOf="parent"
                         android:textStyle="bold"
