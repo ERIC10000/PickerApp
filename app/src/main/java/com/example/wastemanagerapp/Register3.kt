@@ -34,17 +34,18 @@ class Register3 : AppCompatActivity() {
         val constituency = PrefsHelper.getPrefs(this , "constituency")
         val county = PrefsHelper.getPrefs(this,"county")
         val idNumb = PrefsHelper.getPrefs(this , "idNumb")
+        val mobileNumber = PrefsHelper.getPrefs(this,"mobileNumber")
 
         val progressBar = findViewById<ProgressBar>(R.id.progressBar)
 
         val next : TextView =  findViewById(R.id.next3)
         next.setOnClickListener {
-            post_data(firstName , lastName , email , constituency , county , idNumb , progressBar )
+            post_data(firstName , lastName , email , constituency , county , idNumb , progressBar , mobileNumber )
         }
     }
 
     private fun post_data(firstName: String ,lastName: String ,email:String , constituency: String,
-                          county:String , idNumb:String , progressBar: ProgressBar ){
+                          county:String , idNumb:String , progressBar: ProgressBar , mobileNumber: String){
         progressBar.visibility = View.VISIBLE
         val helper = ApiHelper(this)
         val api = Constant.BASE_URL + "/signup_new_picker"
@@ -53,7 +54,7 @@ class Register3 : AppCompatActivity() {
         body.put("lastName",lastName)
         body.put("county",county)
         body.put("constituency",constituency)
-        body.put("mobileNumber",password.text)
+        body.put("mobileNumber",mobileNumber)
         body.put("email",email)
         body.put("idNumb",idNumb)
         body.put("address",address.text.toString())

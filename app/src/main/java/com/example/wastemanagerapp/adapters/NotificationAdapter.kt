@@ -10,9 +10,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.wastemanagerapp.R
 import com.example.wastemanagerapp.models.Notification
 
-class NotificationAdapter(var itemList : List<Notification>) :
+class NotificationAdapter() :
     RecyclerView.Adapter<NotificationAdapter.ViewHolder>(){
 
+    var itemList : List<Notification> = listOf()  //Its empty
     // declare a variable of type List<Model> (Empty)
      // its empty
 
@@ -43,8 +44,8 @@ class NotificationAdapter(var itemList : List<Notification>) :
         // bind data to the singleBooking
         time.text = singleNotification.time
         title.text = singleNotification.title
-        sender.text =  singleNotification.sender
-        body.text =  singleNotification.message
+        sender.text =  "Sender : " + singleNotification.sender
+        body.text =  singleNotification.notifications
 
         // Clicking on a LabTest and proceeding to SingleLabTest Activity with data from the model
         // holder.itemView.setOnClickListener {
