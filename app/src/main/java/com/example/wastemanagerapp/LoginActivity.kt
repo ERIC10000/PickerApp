@@ -30,7 +30,13 @@ class LoginActivity : AppCompatActivity() {
         val login: AppCompatButton = findViewById(R.id.btn_login)
 
         login.setOnClickListener {
-            login(email , password)
+            if (email.text.isEmpty() || password.text.isEmpty()){
+                Toast.makeText(applicationContext, "Please fill in all the fields", Toast.LENGTH_LONG).show()
+
+            }else{
+                login(email , password)
+
+            }
         }
 
 

@@ -9,6 +9,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.widget.AppCompatButton
+import androidx.appcompat.widget.AppCompatCheckBox
 import com.example.wastemanagerapp.helpers.ApiHelper
 import com.example.wastemanagerapp.helpers.Constant
 import com.example.wastemanagerapp.helpers.PrefsHelper
@@ -28,19 +30,38 @@ class Register3 : AppCompatActivity() {
         password  = findViewById(R.id.password)
         password2  = findViewById(R.id.password2)
 
+        val checkBox : AppCompatCheckBox = findViewById(R.id.agreement)
+        val button : AppCompatButton = findViewById(R.id.next3)
+
+
+        checkBox.setOnCheckedChangeListener { _, isChecked ->
+            button.isEnabled = isChecked
+        }
+
         val firstName = PrefsHelper.getPrefs(this,"firstName")
         val lastName = PrefsHelper.getPrefs(this , "lastName")
         val email = PrefsHelper.getPrefs(this , "email")
         val constituency = PrefsHelper.getPrefs(this , "constituency")
         val county = PrefsHelper.getPrefs(this,"county")
-        val idNumb = PrefsHelper.getPrefs(this , "idNumb")
+        val idNumb = PrefsHelper.getPrefs(this , "idNumber")
         val mobileNumber = PrefsHelper.getPrefs(this,"mobileNumber")
 
         val progressBar = findViewById<ProgressBar>(R.id.progressBar)
 
         val next : TextView =  findViewById(R.id.next3)
         next.setOnClickListener {
-            post_data(firstName , lastName , email , constituency , county , idNumb , progressBar , mobileNumber )
+            if(address.text.isEmpty() || password.text.isEmpty()){
+                Toast.makeText(applicationContext, "Please fill in all the fields", Toast.LENGTH_LONG).show()
+
+            }else{
+                if (password.text.toString() != password2.text.toString()){
+                    Toast.makeText(applicationContext, "Your Password do not match", Toast.LENGTH_SHORT).show()
+                }else{
+                    post_data(firstName , lastName , email , constituency , county , idNumb , progressBar , mobileNumber )
+
+                }
+
+            }
         }
     }
 
@@ -71,20 +92,46 @@ class Register3 : AppCompatActivity() {
 //                intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
 //                startActivity(intent)
 //                finish()
+                PrefsHelper.clearPrefs(applicationContext)
 
                 val alertDialog = AlertDialog.Builder(this@Register3).create()
                 alertDialog.setTitle("")
                 val view =
                     LayoutInflater.from(this@Register3).inflate(R.layout.payment_alert_dialog, null, false)
                 alertDialog.setView(view)
+                val phone = view.findViewById<EditText>(R.id.emailLogin1)
 
                 view.findViewById<Button>(R.id.pay).setOnClickListener {
-                    val intent = Intent(applicationContext, LoginActivity::class.java)
-                    startActivity(intent)
+                    mpesaPayment(phone.text.toString())
+
                     alertDialog.dismiss()
                 }
 
                 alertDialog.show()
+            }
+
+            override fun onFailure(result: String?) {
+                Toast.makeText(applicationContext, result.toString(), Toast.LENGTH_SHORT).show()
+            }
+        })
+    }
+
+    private fun mpesaPayment (phone: String ){
+        val api = Constant.BASE_URL + "/making_contributions"
+        val helper = ApiHelper(this)
+        val body = JSONObject()
+        body.put("phone",phone)
+        body.put("amount","500")
+        helper.post(api , body , object:ApiHelper.CallBack{
+            override fun onSuccess(result: JSONArray?) {
+
+            }
+
+            override fun onSuccess(result: JSONObject?) {
+                Toast.makeText(applicationContext, result.toString(), Toast.LENGTH_SHORT).show()
+                val intent = Intent(applicationContext, LoginActivity::class.java)
+                intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                startActivity(intent)
             }
 
             override fun onFailure(result: String?) {
