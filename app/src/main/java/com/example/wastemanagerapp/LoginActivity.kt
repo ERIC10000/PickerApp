@@ -64,8 +64,8 @@ class LoginActivity : AppCompatActivity() {
                 val lastName = message.getString("Last Name")
                 val county = message.getString("County")
                 val constituency = message.getString("Constituency")
-                val idNumb = message.getString("Idnumb")
-                val phone = message.getString("MobileNumber")
+                val idNumb = message.getInt("Idnumb")
+                val phone = message.getInt("MobileNumber")
 
 
                 PrefsHelper.savePrefs(applicationContext , "cardId",cardId)
@@ -73,8 +73,8 @@ class LoginActivity : AppCompatActivity() {
                 PrefsHelper.savePrefs(applicationContext , "lastName", lastName)
                 PrefsHelper.savePrefs(applicationContext , "county",county)
                 PrefsHelper.savePrefs(applicationContext , "constituency",constituency)
-                PrefsHelper.savePrefs(applicationContext , "idNumb",idNumb)
-                PrefsHelper.savePrefs(applicationContext , "phone",phone)
+                PrefsHelper.savePrefs(applicationContext , "idNumb",idNumb.toString())
+                PrefsHelper.savePrefs(applicationContext , "phone",phone.toString())
 
                 val intent = Intent(applicationContext , HomeActivity::class.java)
                 startActivity(intent)
