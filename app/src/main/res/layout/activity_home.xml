@@ -26,7 +26,7 @@
         app:itemIconTint="@drawable/bottom_nav_item_background"
         app:itemPaddingBottom="10dp"
         app:itemPaddingTop="10dp"
-        app:itemRippleColor="@color/g_white"
+        app:itemRippleColor="@color/g_blue"
         app:labelVisibilityMode="unlabeled"
         app:menu="@menu/bottom_navigation_menu" />
 

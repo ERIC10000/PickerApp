@@ -29,6 +29,11 @@ class HomeFragment : Fragment() {
 
         cardName.text = "Name : $firstName"
 
+        val last : TextView = root.findViewById(R.id.last)
+        val lastName = PrefsHelper.getPrefs(requireContext(), "lastName")
+
+        last.text = "Name : $lastName"
+
         val cardLocation : TextView = root.findViewById(R.id.cardLocation)
         val county = PrefsHelper.getPrefs(requireContext(), "county")
 
