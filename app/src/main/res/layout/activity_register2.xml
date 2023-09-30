@@ -19,17 +19,17 @@
 
         <TextView
             android:id="@+id/tvAppNAme"
+            style="h3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            style="h3"
             android:layout_marginTop="110dp"
             android:drawableStart="@drawable/ic_app_logo"
             android:drawablePadding="6dp"
+            android:text="KeNaWPWA"
             android:textStyle="bold"
-            android:text="WAPAK I.M.S"
-            app:layout_constraintStart_toStartOf="@id/guidelineLeft"
             app:layout_constraintEnd_toEndOf="@id/guidelineRight"
-            app:layout_constraintTop_toTopOf="parent"/>
+            app:layout_constraintStart_toStartOf="@id/guidelineLeft"
+            app:layout_constraintTop_toTopOf="parent" />
 
 
 
