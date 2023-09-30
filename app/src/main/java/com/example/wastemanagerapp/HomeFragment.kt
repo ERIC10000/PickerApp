@@ -42,7 +42,7 @@ class HomeFragment : Fragment() {
         val cardConst : TextView = root.findViewById(R.id.cardConst)
         val constituency = PrefsHelper.getPrefs(requireContext(), "constituency")
 
-        cardConst.text = "Constituency : $constituency"
+        cardConst.text = "Ward : $constituency"
 
         val nationalId : TextView = root.findViewById(R.id.nationalID)
         val idNumb = PrefsHelper.getPrefs(requireContext(), "idNumb")
