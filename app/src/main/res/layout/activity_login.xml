@@ -65,7 +65,7 @@
             app:layout_constraintEnd_toEndOf="@id/guidelineRight"
             app:layout_constraintTop_toBottomOf="@id/Quality"
             style="@style/editText"
-            android:hint="Email / Phone Number +254..."
+            android:hint="Email / Phone Number i.e 0722..."
             android:inputType="textEmailAddress"
 
             android:layout_marginTop="50dp"/>

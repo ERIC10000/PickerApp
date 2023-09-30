@@ -47,7 +47,7 @@ class LoginActivity : AppCompatActivity() {
         val helper = ApiHelper(this)
         val api = Constant.BASE_URL + "/picker_login"
         val body = JSONObject()
-        body.put("email",email.text.toString())
+        body.put("email",email.text)
         body.put("password",password.text.toString())
         helper.post(api , body , object:ApiHelper.CallBack{
             override fun onSuccess(result: JSONArray?) {
