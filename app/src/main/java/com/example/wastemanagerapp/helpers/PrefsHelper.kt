@@ -14,6 +14,8 @@ class PrefsHelper {
 
         }// end save
 
+
+
         fun getPrefs(context: Context,key: String) : String{
             val pref:SharedPreferences = context.getSharedPreferences("store",Context.MODE_PRIVATE)
             val value = pref.getString(key, "") // if key is empty or does not exist return empty

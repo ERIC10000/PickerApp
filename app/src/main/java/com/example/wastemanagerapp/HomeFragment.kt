@@ -5,7 +5,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
+import com.bumptech.glide.Glide
 import com.example.wastemanagerapp.helpers.PrefsHelper
 
 
@@ -18,7 +20,22 @@ class HomeFragment : Fragment() {
         // Inflate the layout for this fragment
 
 
+
         val root =  inflater.inflate(R.layout.fragment_home, container, false)
+
+        val image1 : ImageView = root.findViewById(R.id.smallImage)
+        val image2 : ImageView = root.findViewById(R.id.bigImage)
+
+        val imagePath = PrefsHelper.getPrefs(requireContext() , "image")
+
+        Glide.with(this)
+            .load(imagePath)
+            .into(image1)
+
+        Glide.with(this)
+            .load(imagePath)
+            .into(image2)
+
         val cardId : TextView = root.findViewById(R.id.cardID)
         val memberID = PrefsHelper.getPrefs(requireContext(), "cardId")
 

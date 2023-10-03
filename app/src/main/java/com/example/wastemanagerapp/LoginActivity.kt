@@ -47,7 +47,8 @@ class LoginActivity : AppCompatActivity() {
         val helper = ApiHelper(this)
         val api = Constant.BASE_URL + "/picker_login"
         val body = JSONObject()
-        body.put("email",email.text)
+        val data = format(email)
+        body.put("email",data)
         body.put("password",password.text.toString())
         helper.post(api , body , object:ApiHelper.CallBack{
             override fun onSuccess(result: JSONArray?) {
@@ -86,4 +87,21 @@ class LoginActivity : AppCompatActivity() {
         })
 
     }
+
+    private fun format ( email: EditText) : Any{
+        val userInput = email.text.toString()
+
+// Check if the input is not empty and does not contain any digits
+        if (userInput.isNotEmpty() && !userInput.any { it.isDigit() }) {
+            // Input is a valid string
+            // Do something with the string
+            return userInput
+        } else {
+            // Input is not a valid string
+            // Handle the case where the input is not a valid string
+            return userInput.toInt()
+        }
+    }
+
+
 }
