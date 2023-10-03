@@ -5,10 +5,12 @@ import android.content.ActivityNotFoundException
 import android.content.Intent
 import android.graphics.Bitmap
 import android.net.Uri
+import android.opengl.Visibility
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.MediaStore
 import android.provider.Settings
+import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import coil.load
@@ -46,10 +48,10 @@ class ImageCapture : AppCompatActivity() {
             startActivity(intent)
         }
         binding.btnCamera.setOnClickListener {
-            cameraCheckPermission()
+            camera()
         }
         binding.btnGallery.setOnClickListener {
-            galleryCheckPermission()
+            gallery()
         }
 
         binding.imageView.setOnClickListener {
@@ -113,6 +115,9 @@ class ImageCapture : AppCompatActivity() {
                             if (report.areAllPermissionsGranted()){
                                 camera()
                             }
+                            else{
+                                showRotationalDialogForPermission()
+                            }
                         }
                     }
 
@@ -139,9 +144,11 @@ class ImageCapture : AppCompatActivity() {
                 CAMERA_REQUEST_CODE -> {
 
                     val bitmap = data?.extras?.get("data") as Bitmap
-                    postImageToApi(bitmap)
-                    val imagePath = saveImageToFile(bitmap)
-                    PrefsHelper.savePrefs(this,"image",imagePath)
+                    binding.btnImage.setOnClickListener {
+                        postImageToApi(bitmap)
+                        val imagePath = saveImageToFile(bitmap)
+                        PrefsHelper.savePrefs(this,"image",imagePath)
+                    }
                     // we are using coroutine image loader  (coil)
                     binding.imageView.load(bitmap){
                         crossfade(true)
@@ -155,9 +162,13 @@ class ImageCapture : AppCompatActivity() {
 
                     val uri: Uri? = data?.data
                     val bitmap = MediaStore.Images.Media.getBitmap(this.contentResolver, uri)
-                    postImageToApi(bitmap)
-                    val imagePath = saveImageToFile(bitmap)
-                    PrefsHelper.savePrefs(this,"image",imagePath)
+                    binding.btnImage.setOnClickListener {
+                        postImageToApi(bitmap)
+                        val imagePath = saveImageToFile(bitmap)
+                        PrefsHelper.savePrefs(this,"image",imagePath)
+                    }
+
+
                     binding.imageView.load(data?.data){
                         crossfade(true)
                         crossfade(1000)
@@ -190,6 +201,7 @@ class ImageCapture : AppCompatActivity() {
     }
 
     private fun postImageToApi(bitmap: Bitmap){
+        binding.progressbar.visibility = View.VISIBLE
         val client = AsyncHttpClient()
         val requestParams = RequestParams()
 
@@ -210,7 +222,8 @@ class ImageCapture : AppCompatActivity() {
                 headers: Array<out cz.msebera.android.httpclient.Header>?,
                 responseBody: ByteArray?
             ) {
-                Toast.makeText(applicationContext, "Success", Toast.LENGTH_SHORT).show()
+                binding.progressbar.visibility = View.GONE
+                Toast.makeText(applicationContext, "You have a successfully selected a profile photo", Toast.LENGTH_SHORT).show()
             }
 
             override fun onFailure(
@@ -219,7 +232,8 @@ class ImageCapture : AppCompatActivity() {
                 responseBody: ByteArray?,
                 error: Throwable?
             ) {
-                Toast.makeText(applicationContext, "failure", Toast.LENGTH_SHORT).show()
+                binding.progressbar.visibility = View.GONE
+                Toast.makeText(applicationContext, "An error occurred", Toast.LENGTH_SHORT).show()
             }
         })
     }
