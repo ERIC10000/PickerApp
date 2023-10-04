@@ -82,7 +82,7 @@ class LoginActivity : AppCompatActivity() {
             }
 
             override fun onFailure(result: String?) {
-
+                Toast.makeText(applicationContext, "An error occurred", Toast.LENGTH_SHORT).show()
             }
         })
 
