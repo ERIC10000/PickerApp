@@ -15,8 +15,7 @@ import com.example.wastemanagerapp.helpers.PrefsHelper
 
 
 class HomeFragment : Fragment() {
-    lateinit var drawerLayout : DrawerLayout
-    lateinit var actionBarDrawerToggle: ActionBarDrawerToggle
+
 
 
 
@@ -29,10 +28,7 @@ class HomeFragment : Fragment() {
 
 
         val root =  inflater.inflate(R.layout.fragment_home, container, false)
-        drawerLayout = root.findViewById(R.id.drawer_layout)
-        actionBarDrawerToggle = ActionBarDrawerToggle(HomeActivity(),drawerLayout,R.string.nav_open,R.string.nav_close)
-        drawerLayout.addDrawerListener(actionBarDrawerToggle)
-        actionBarDrawerToggle.syncState()
+
 
 
 
@@ -88,11 +84,7 @@ class HomeFragment : Fragment() {
         return  root
     }
 
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return if (actionBarDrawerToggle.onOptionsItemSelected(item)) {
-            true
-        } else super.onOptionsItemSelected(item)
-    }
+
 
 
 }
