@@ -1,6 +1,8 @@
 package com.example.wastemanagerapp
 
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -12,6 +14,7 @@ import com.example.wastemanagerapp.adapters.NotificationAdapter
 import com.example.wastemanagerapp.helpers.ApiHelper
 import com.example.wastemanagerapp.helpers.Constant
 import com.example.wastemanagerapp.models.Notification
+import com.google.android.material.textfield.TextInputEditText
 import com.google.gson.GsonBuilder
 import org.json.JSONArray
 import org.json.JSONObject
@@ -21,6 +24,7 @@ class NotificationFragment : Fragment() {
 
     lateinit var recyclerView: RecyclerView
     lateinit var notificationAdapter: NotificationAdapter
+    lateinit var itemList: List<Notification>
 
 
 
@@ -33,6 +37,21 @@ class NotificationFragment : Fragment() {
         recyclerView = view.findViewById(R.id.recylerView)
         notificationAdapter = NotificationAdapter()
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
+        val searchBar : TextInputEditText = view.findViewById(R.id.searchBar)
+        searchBar.addTextChangedListener(object: TextWatcher{
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+
+            }
+
+            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                filter(p0.toString())
+            }
+
+            override fun afterTextChanged(p0: Editable?) {
+
+            }
+        })
+
 
         getNotifications()
 
@@ -48,7 +67,7 @@ class NotificationFragment : Fragment() {
         helper.get(api , object:ApiHelper.CallBack{
             override fun onSuccess(result: JSONArray?) {
                 val gson = GsonBuilder().create()
-                val itemList = gson.fromJson(
+                 itemList = gson.fromJson(
                     result.toString(),
                     Array<Notification>::class.java
                 ).toList()
@@ -67,6 +86,34 @@ class NotificationFragment : Fragment() {
         })
 
 
+    }
+
+    //Filter
+    private fun filter(text: String) {
+
+
+
+        // creating a new array list to filter our data.
+        val filteredlist: ArrayList<Notification> = ArrayList()
+        // running a for loop to compare elements.
+        for (item in itemList) {
+            // checking if the entered string matched with any item of our recycler view.
+            if (item.title.lowercase().contains(text.lowercase())) {
+                // if the item is matched we are
+                // adding it to our filtered list.
+                filteredlist.add(item)
+            }
+        }
+        if (filteredlist.isEmpty()) {
+            // if no item is added in filtered list we are
+            // displaying a toast message as no data found.
+            //Toast.makeText(this, "No Data Found..", Toast.LENGTH_SHORT).show()
+            notificationAdapter.filterList(filteredlist)
+        } else {
+            // at last we are passing that filtered
+            // list to our adapter class.
+            notificationAdapter.filterList(filteredlist)
+        }
     }
 
 }
