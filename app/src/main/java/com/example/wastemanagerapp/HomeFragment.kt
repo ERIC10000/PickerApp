@@ -50,7 +50,7 @@ class HomeFragment : Fragment() {
         val cardId : TextView = root.findViewById(R.id.cardID)
         val memberID = PrefsHelper.getPrefs(requireContext(), "cardId")
 
-        cardId.text = "Member Id : $memberID"
+        cardId.text = "REG NO : $memberID"
 
         val cardName : TextView = root.findViewById(R.id.cardName)
         val firstName = PrefsHelper.getPrefs(requireContext(), "firstName")
@@ -65,22 +65,22 @@ class HomeFragment : Fragment() {
         val cardLocation : TextView = root.findViewById(R.id.cardLocation)
         val county = PrefsHelper.getPrefs(requireContext(), "county")
 
-        cardLocation.text = "County : $county"
+        cardLocation.text = "COUNTY : $county"
 
         val cardConst : TextView = root.findViewById(R.id.cardConst)
         val constituency = PrefsHelper.getPrefs(requireContext(), "constituency")
 
-        cardConst.text = "Ward : $constituency"
+        cardConst.text = "WARD : $constituency"
 
         val nationalId : TextView = root.findViewById(R.id.nationalID)
         val idNumb = PrefsHelper.getPrefs(requireContext(), "idNumb")
 
-        nationalId.text = "National ID : $idNumb"
+        nationalId.text = "ID NO : $idNumb"
 
         val telephoneNo : TextView = root.findViewById(R.id.telephoneNo)
         val phone = PrefsHelper.getPrefs(requireContext(), "phone")
 
-        telephoneNo.text = "Telephone: +254$phone"
+        telephoneNo.text = "TEL : +254$phone"
         return  root
     }
 

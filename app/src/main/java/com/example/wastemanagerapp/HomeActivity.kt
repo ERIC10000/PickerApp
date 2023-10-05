@@ -18,19 +18,21 @@ class HomeActivity : AppCompatActivity() {
 
 
         bottomNavigation = findViewById(R.id.bottom_navigation)
-        bottomNavigation.setOnItemSelectedListener { menuItem ->
+        bottomNavigation.setOnNavigationItemSelectedListener{ menuItem ->
             when(menuItem.itemId){
 
                 R.id.home -> {
                     replaceFragment(HomeFragment())
+                    return@setOnNavigationItemSelectedListener true
                 }
 
                 R.id.profile -> {
                     replaceFragment(NotificationFragment())
+                    return@setOnNavigationItemSelectedListener true
                 }
+                else -> return@setOnNavigationItemSelectedListener false
 
             } // end when
-            true
         }
         replaceFragment(HomeFragment())
 
