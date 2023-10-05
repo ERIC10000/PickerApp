@@ -5,8 +5,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:orientation="vertical"
-    android:background="@color/g_line"
     android:layout_height="match_parent"
+    android:background="@drawable/bg"
     tools:context=".ImageCapture">
 
     <com.google.android.material.textview.MaterialTextView
@@ -21,7 +21,8 @@
 
     <ImageView
         android:id="@+id/imageView"
-        android:src="@color/cardview_dark_background"
+        android:src="@drawable/baseline_person_24"
+
         android:layout_gravity="center"
         android:layout_width="300dp"
         android:layout_marginTop="50dp"
