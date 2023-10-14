@@ -3,6 +3,7 @@ package com.example.wastemanagerapp
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
@@ -50,6 +51,7 @@ class LoginActivity : AppCompatActivity() {
         val data = format(email)
         body.put("email",data)
         body.put("password",password.text.toString())
+
         helper.post(api , body , object:ApiHelper.CallBack{
             override fun onSuccess(result: JSONArray?) {
 
@@ -82,6 +84,7 @@ class LoginActivity : AppCompatActivity() {
             }
 
             override fun onFailure(result: String?) {
+                Log.d("Hapa",result.toString())
                 Toast.makeText(applicationContext, "An error occurred", Toast.LENGTH_SHORT).show()
             }
         })

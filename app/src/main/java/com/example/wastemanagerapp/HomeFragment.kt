@@ -47,40 +47,38 @@ class HomeFragment : Fragment() {
             .load(imagePath)
             .into(image2)
 
-        val cardId : TextView = root.findViewById(R.id.cardID)
+
+        val cardId : TextView = root.findViewById(R.id.regnotagvalue)
         val memberID = PrefsHelper.getPrefs(requireContext(), "cardId")
 
-        cardId.text = "REG NO : $memberID"
+        cardId.text = " $memberID"
 
-        val cardName : TextView = root.findViewById(R.id.cardName)
+        val cardName : TextView = root.findViewById(R.id.namevalue)
         val firstName = PrefsHelper.getPrefs(requireContext(), "firstName")
 
-        cardName.text = "First Name : $firstName"
-
-        val last : TextView = root.findViewById(R.id.last)
         val lastName = PrefsHelper.getPrefs(requireContext(), "lastName")
+        cardName.text = " $firstName $lastName"
 
-        last.text = "Last Name : $lastName"
 
-        val cardLocation : TextView = root.findViewById(R.id.cardLocation)
+        val cardLocation : TextView = root.findViewById(R.id.countyvalue)
         val county = PrefsHelper.getPrefs(requireContext(), "county")
 
-        cardLocation.text = "COUNTY : $county"
+        cardLocation.text = " $county"
 
-        val cardConst : TextView = root.findViewById(R.id.cardConst)
+        val cardConst : TextView = root.findViewById(R.id.wardvalue)
         val constituency = PrefsHelper.getPrefs(requireContext(), "constituency")
 
-        cardConst.text = "WARD : $constituency"
+        cardConst.text = " $constituency"
 
-        val nationalId : TextView = root.findViewById(R.id.nationalID)
+        val nationalId : TextView = root.findViewById(R.id.idvalue)
         val idNumb = PrefsHelper.getPrefs(requireContext(), "idNumb")
 
-        nationalId.text = "ID NO : $idNumb"
+        nationalId.text = " $idNumb"
 
-        val telephoneNo : TextView = root.findViewById(R.id.telephoneNo)
+        val telephoneNo : TextView = root.findViewById(R.id.telvalue)
         val phone = PrefsHelper.getPrefs(requireContext(), "phone")
 
-        telephoneNo.text = "TEL : +254$phone"
+        telephoneNo.text = " +254$phone"
         return  root
     }
 
