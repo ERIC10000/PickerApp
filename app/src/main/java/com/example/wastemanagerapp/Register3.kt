@@ -5,6 +5,7 @@ import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.*
@@ -111,7 +112,10 @@ class Register3 : AppCompatActivity() {
             }
 
             override fun onFailure(result: String?) {
+
                 Toast.makeText(applicationContext, result.toString(), Toast.LENGTH_SHORT).show()
+                progressBar.visibility = View.GONE
+                Log.d("meso",result.toString())
             }
         })
     }
