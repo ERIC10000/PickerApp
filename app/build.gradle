@@ -66,4 +66,8 @@ dependencies {
     // circular image
     implementation 'de.hdodenhof:circleimageview:3.1.0'
 
+    // pdf
+
+    implementation 'com.itextpdf.android:itext7-core-android:7.2.3'
+
 }
