@@ -22,7 +22,6 @@
     <ImageView
         android:id="@+id/imageView"
         android:src="@drawable/baseline_person_24"
-
         android:layout_gravity="center"
         android:layout_width="300dp"
         android:layout_marginTop="50dp"
@@ -34,7 +33,8 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
-        <com.google.android.material.button.MaterialButton
+        <androidx.appcompat.widget.AppCompatButton
+            style="@style/blueButtonStyle"
             android:layout_width="wrap_content"
             android:id="@+id/btnCamera"
             android:layout_weight="1"
@@ -43,7 +43,8 @@
 
             android:text="Picture"/>
 
-        <com.google.android.material.button.MaterialButton
+        <androidx.appcompat.widget.AppCompatButton
+            style="@style/blueButtonStyle"
             android:layout_width="wrap_content"
             android:id="@+id/btnGallery"
             android:layout_weight="1"
@@ -52,7 +53,8 @@
 
             android:text="Gallery"/>
 
-        <com.google.android.material.button.MaterialButton
+        <androidx.appcompat.widget.AppCompatButton
+            style="@style/blueButtonStyle"
             android:layout_width="wrap_content"
             android:id="@+id/btnNext"
             android:layout_weight="1"
@@ -63,7 +65,9 @@
 
     </LinearLayout>
 
-    <com.google.android.material.button.MaterialButton
+    <androidx.appcompat.widget.AppCompatButton
+        android:padding="8dp"
+        style="@style/blueButtonStyle"
         android:layout_width="wrap_content"
         android:id="@+id/btnImage"
         android:layout_gravity="center"

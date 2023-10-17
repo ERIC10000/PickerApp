@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -14,15 +16,18 @@
         <activity
             android:name=".ImageCapture"
             android:exported="false" />
+
         <activity
             android:name=".IntroductionActivity"
             android:exported="false" />
         <activity
             android:name=".Register3"
             android:exported="false" />
+
         <activity
             android:name=".Register2"
             android:exported="false" />
+
         <activity
             android:name=".RegisterActivity"
             android:exported="false" />
