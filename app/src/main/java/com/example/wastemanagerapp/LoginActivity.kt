@@ -4,7 +4,9 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.EditText
+import android.widget.ProgressBar
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.widget.AppCompatButton
@@ -30,12 +32,13 @@ class LoginActivity : AppCompatActivity() {
 
         val login: AppCompatButton = findViewById(R.id.btn_login)
 
+        val progress: ProgressBar = findViewById(R.id.progress)
         login.setOnClickListener {
             if (email.text.isEmpty() || password.text.isEmpty()){
                 Toast.makeText(applicationContext, "Please fill in all the fields", Toast.LENGTH_LONG).show()
 
             }else{
-                login(email , password)
+                login(email , password , progress)
 
             }
         }
@@ -44,7 +47,8 @@ class LoginActivity : AppCompatActivity() {
 
     }
 
-    private  fun  login( email : EditText , password : EditText){
+    private  fun  login( email : EditText , password : EditText , progressBar: ProgressBar){
+        progressBar.visibility = View.VISIBLE
         val helper = ApiHelper(this)
         val api = Constant.BASE_URL + "/picker_login"
         val body = JSONObject()
@@ -58,6 +62,7 @@ class LoginActivity : AppCompatActivity() {
             }
 
             override fun onSuccess(result: JSONObject?) {
+                progressBar.visibility = View.GONE
                 Toast.makeText(applicationContext, "Welcome", Toast.LENGTH_SHORT).show()
 
                 val message = result!!.getJSONObject("message")
@@ -84,6 +89,7 @@ class LoginActivity : AppCompatActivity() {
             }
 
             override fun onFailure(result: String?) {
+                progressBar.visibility = View.GONE
                 Log.d("Hapa",result.toString())
                 Toast.makeText(applicationContext, "An error occurred", Toast.LENGTH_SHORT).show()
             }

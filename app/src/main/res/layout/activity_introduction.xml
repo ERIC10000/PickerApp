@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/band"
     tools:context=".IntroductionActivity">
 
 
@@ -34,10 +33,6 @@
 
 
     </androidx.cardview.widget.CardView>
-
-
-
-
 
 
     <androidx.constraintlayout.widget.Guideline
@@ -80,7 +75,7 @@
 
 
     <TextView
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="30dp"
         android:id="@+id/writeAddress"
         style="@style/h4"
         android:textColor="#000000"
