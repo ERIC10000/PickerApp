@@ -37,7 +37,20 @@ class Register3 : AppCompatActivity() {
 
 
         checkBox.setOnCheckedChangeListener { _, isChecked ->
+
+            val alertDialog = AlertDialog.Builder(this@Register3).create()
+            alertDialog.setTitle("")
+            val view =
+                LayoutInflater.from(this@Register3).inflate(R.layout.terms_and_conditions, null, false)
+            alertDialog.setView(view)
+
+            // radio button implementation here...
+
+
+            alertDialog.show()
+
             button.isEnabled = isChecked
+
         }
 
         val firstName = PrefsHelper.getPrefs(this,"firstName")
@@ -56,6 +69,13 @@ class Register3 : AppCompatActivity() {
                 Toast.makeText(applicationContext, "Please fill in all the fields", Toast.LENGTH_LONG).show()
 
             }else{
+                if (password.text.toString() != password2.text.toString()){
+                    Toast.makeText(applicationContext, "Your Password do not match", Toast.LENGTH_SHORT).show()
+                }else{
+                    post_data(firstName , lastName , email , constituency , county , idNumb , progressBar , mobileNumber )
+                    notifyAndUpdate(firstName , lastName , mobileNumber , "500",county)
+
+
 
                 if(isPasswordValid(password.text.toString())){
                     if (password.text.toString() != password2.text.toString()){
@@ -152,10 +172,54 @@ class Register3 : AppCompatActivity() {
         })
     }
 
+    private fun notifyAndUpdate(firstName:String , lastName: String , phone: String , amount: String , county: String){
+        val helper = ApiHelper(this)
+        val body1 = JSONObject()
+        val api1 = Constant.BASE_URL + "add_approval_notification"
+        body1.put("firstName",firstName)
+        body1.put("lastName",lastName)
+        helper.post(api1 , body1 , object:ApiHelper.CallBack{
+            override fun onSuccess(result: JSONArray?) {
+
+            }
+
+            override fun onSuccess(result: JSONObject?) {
+                Toast.makeText(applicationContext, result.toString(), Toast.LENGTH_SHORT).show()
+            }
+
+            override fun onFailure(result: String?) {
+                Toast.makeText(applicationContext, result.toString(), Toast.LENGTH_SHORT).show()
+            }
+        })
+
+        val body2 = JSONObject()
+        val api2 = Constant.BASE_URL + "upload_registration_details"
+        body2.put("firstName",firstName)
+        body2.put("lastName",lastName)
+        body2.put("phoneNumber",phone)
+        body2.put("amount",amount)
+        body2.put("county",county)
+
+        helper.post(api2 , body2 , object: ApiHelper.CallBack{
+            override fun onSuccess(result: JSONArray?) {
+
+            }
+
+            override fun onSuccess(result: JSONObject?) {
+                Toast.makeText(applicationContext, result.toString(), Toast.LENGTH_SHORT).show()
+            }
+
+            override fun onFailure(result: String?) {
+                Toast.makeText(applicationContext, result.toString(), Toast.LENGTH_SHORT).show()
+            }
+        })
+
+
     fun isPasswordValid(password: String): Boolean {
         val passwordRegex = "^(?=.*[A-Z])(?=.*[!@#\\$%^&*]).{8,}\$"
         val pattern = Pattern.compile(passwordRegex)
         return pattern.matcher(password).matches()
+
     }
 
 

@@ -5,6 +5,7 @@
     <string name="slogan">Information \n  Management  App \n  For Waste Pickers \n  in Kenya</string>
     <string name="nav_open">Open</string>
     <string name="nav_close">Close</string>
+    <string name="termsAndConditions">I have personaly accepted to give  \nConsent of my personal information \nBio data and Profile Photo for the  \nRegistration of the KeNaWAPWA \nRegistration Information Management \nSystem as a Waste Picker in Kenya.</string>
     <string-array name="Languages">
         <item>Nairobi</item>
         <item>Mombasa</item>

@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.EditText
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.wastemanagerapp.adapters.NotificationAdapter
@@ -32,12 +33,13 @@ class NotificationFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_notification, container, false)
         recyclerView = view.findViewById(R.id.recylerView)
         notificationAdapter = NotificationAdapter()
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
-        val searchBar : TextInputEditText = view.findViewById(R.id.searchBar)
+        val searchBar : EditText = view.findViewById(R.id.searchBar)
         searchBar.addTextChangedListener(object: TextWatcher{
             override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
 

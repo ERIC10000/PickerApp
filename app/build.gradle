@@ -70,4 +70,8 @@ dependencies {
 
     implementation 'com.itextpdf.android:itext7-core-android:7.2.3'
 
+    // drawer
+
+    implementation 'nl.psdcompany:duo-navigation-drawer:3.0.0'
+
 }
