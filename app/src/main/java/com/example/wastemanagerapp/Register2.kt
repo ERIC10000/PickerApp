@@ -11,6 +11,7 @@ import android.widget.Spinner
 import android.widget.TextView
 import android.widget.Toast
 import com.example.wastemanagerapp.helpers.PrefsHelper
+import java.util.regex.Pattern
 
 class Register2 : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -58,14 +59,28 @@ class Register2 : AppCompatActivity() {
                 Toast.makeText(applicationContext, "Please fill in all the fields", Toast.LENGTH_LONG).show()
             }else{
 
-                PrefsHelper.savePrefs(this,"constituency",constituency.text.toString())
-                PrefsHelper.savePrefs(this,"mobileNumber",mobileNumber.text.toString())
-                PrefsHelper.savePrefs(this,"idNumber", idNumber.text.toString())
-                val intent = Intent(applicationContext , Register3::class.java)
-                startActivity(intent)
+                if(isPhoneNumberValid(mobileNumber.text.toString())){
+                    PrefsHelper.savePrefs(this,"constituency",constituency.text.toString())
+                    PrefsHelper.savePrefs(this,"mobileNumber",mobileNumber.text.toString())
+                    PrefsHelper.savePrefs(this,"idNumber", idNumber.text.toString())
+                    val intent = Intent(applicationContext , Register3::class.java)
+                    startActivity(intent)
+                }
+                else{
+                    Toast.makeText(applicationContext, "The phone number entered is in an invalid format", Toast.LENGTH_LONG).show()
+
+                }
+
+
             }
 
         }
 
+    }
+
+    private fun isPhoneNumberValid(phoneNumber: String): Boolean {
+        val phoneRegex = "^07\\d{8}\$"
+        val pattern = Pattern.compile(phoneRegex)
+        return pattern.matcher(phoneNumber).matches()
     }
 }

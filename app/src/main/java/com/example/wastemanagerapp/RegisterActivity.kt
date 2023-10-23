@@ -7,6 +7,7 @@ import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import com.example.wastemanagerapp.helpers.PrefsHelper
+import java.util.regex.Pattern
 
 class RegisterActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -27,14 +28,27 @@ class RegisterActivity : AppCompatActivity() {
             if ( firstName.text.isEmpty() || lastName.text.isEmpty() || email.text.isEmpty()){
                 Toast.makeText(applicationContext, "Please fill in all the fields", Toast.LENGTH_LONG).show()
             }else{
-                PrefsHelper.savePrefs(this,"firstName",firstName.text.toString())
-                PrefsHelper.savePrefs(this,"lastName",lastName.text.toString())
-                PrefsHelper.savePrefs(this,"email",email.text.toString())
-                val intent = Intent(applicationContext , Register2::class.java)
-                startActivity(intent)
+
+                if (isEmailValid(email.text.toString())){
+                    PrefsHelper.savePrefs(this,"firstName",firstName.text.toString())
+                    PrefsHelper.savePrefs(this,"lastName",lastName.text.toString())
+                    PrefsHelper.savePrefs(this,"email",email.text.toString())
+                    val intent = Intent(applicationContext , Register2::class.java)
+                    startActivity(intent)
+                }
+                else{
+                    Toast.makeText(applicationContext, "The email entered is in an invalid format", Toast.LENGTH_LONG).show()
+                }
+
             }
 
 
         }
+    }
+
+    private  fun isEmailValid(email: String): Boolean {
+        val emailRegex = "^[A-Za-z0-9+_.-]+@(.+)\$"
+        val pattern = Pattern.compile(emailRegex)
+        return pattern.matcher(email).matches()
     }
 }

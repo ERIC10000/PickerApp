@@ -15,6 +15,7 @@ import com.example.wastemanagerapp.helpers.Constant
 import com.example.wastemanagerapp.helpers.PrefsHelper
 import org.json.JSONArray
 import org.json.JSONObject
+import java.util.regex.Pattern
 
 class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -37,8 +38,27 @@ class LoginActivity : AppCompatActivity() {
             if (email.text.isEmpty() || password.text.isEmpty()){
                 Toast.makeText(applicationContext, "Please fill in all the fields", Toast.LENGTH_LONG).show()
 
+
             }else{
                 login(email , password , progress)
+
+            }
+
+            else{
+                if (isEmailValid(email.text.toString())){
+                    if (isPasswordValid(password.text.toString())){
+                        login(email , password)
+                    }
+                    else{
+                        Toast.makeText(applicationContext, "The password entered must contain at least one symbol , must be at least 8 characters and have at least one capital letter ", Toast.LENGTH_LONG).show()
+                    }
+
+                }
+                else{
+                    Toast.makeText(applicationContext, "The email entered is in an invalid format", Toast.LENGTH_LONG).show()
+                }
+
+
 
             }
         }
@@ -111,6 +131,23 @@ class LoginActivity : AppCompatActivity() {
             return userInput.toInt()
         }
     }
+
+    private fun isEmailValid(email: String): Boolean {
+        val emailRegex = "^[A-Za-z0-9+_.-]+@(.+)\$"
+        val pattern = Pattern.compile(emailRegex)
+        return pattern.matcher(email).matches()
+    }
+
+
+
+    fun isPasswordValid(password: String): Boolean {
+        val passwordRegex = "^(?=.*[A-Z])(?=.*[!@#\\$%^&*]).{8,}\$"
+        val pattern = Pattern.compile(passwordRegex)
+        return pattern.matcher(password).matches()
+    }
+
+
+
 
 
 }
