@@ -1,5 +1,6 @@
 package com.example.wastemanagerapp
 
+import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.Canvas
 
@@ -137,31 +138,35 @@ class HomeFragment : Fragment() {
         //id  card to pdf
         val download: AppCompatButton = root.findViewById(R.id.btn_login)
         download.setOnClickListener {
-                val progressBar: ProgressBar = root.findViewById(R.id.progressBar)
-                progressBar.visibility = View.VISIBLE
-                val pdfFileName = "IDCARD.pdf"
-                val pdfDirectory = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS)
+//                val progressBar: ProgressBar = root.findViewById(R.id.progressBar)
+//                progressBar.visibility = View.VISIBLE
+//                val pdfFileName = "IDCARD.pdf"
+//                val pdfDirectory = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS)
+//
+//                val pdfFile = File(pdfDirectory, pdfFileName)
+//
+//                val pdfDocument = PdfDocument(PdfWriter(pdfFile))
+//                val pdf = Document(pdfDocument)
+//
+//                // Create a bitmap from your CardView
+//                val cardView : CardView = root.findViewById(R.id.cardView)
+//                val cardViewBitmap = viewToBitmap(cardView)
+//
+//                // Convert the bitmap to an iText Image
+//                val image = Image(ImageDataFactory.create(cardViewBitmapToByteArray(cardViewBitmap)))
+//                pdf.add(image)
+//
+//                // Close the document
+//                pdf.close()
+//                progressBar.visibility = View.GONE
+//
+//
+//                // Now you can save the PDF file and provide a download link or any other functionality you want.
+//            Toast.makeText(requireContext(), "Saved Successfully, Proceed to Downloads", Toast.LENGTH_LONG).show()
 
-                val pdfFile = File(pdfDirectory, pdfFileName)
+            val intent = Intent(requireContext(), PreviewIDActivity::class.java)
+            startActivity(intent)
 
-                val pdfDocument = PdfDocument(PdfWriter(pdfFile))
-                val pdf = Document(pdfDocument)
-
-                // Create a bitmap from your CardView
-                val cardView : CardView = root.findViewById(R.id.cardView)
-                val cardViewBitmap = viewToBitmap(cardView)
-
-                // Convert the bitmap to an iText Image
-                val image = Image(ImageDataFactory.create(cardViewBitmapToByteArray(cardViewBitmap)))
-                pdf.add(image)
-
-                // Close the document
-                pdf.close()
-                progressBar.visibility = View.GONE
-
-
-                // Now you can save the PDF file and provide a download link or any other functionality you want.
-            Toast.makeText(requireContext(), "Saved Successfully, Proceed to Downloads", Toast.LENGTH_LONG).show()
 
         }
 

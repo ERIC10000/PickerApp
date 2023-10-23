@@ -422,210 +422,19 @@
                         app:layout_constraintTop_toTopOf="parent"
                         android:layout_marginBottom="20dp"/>
 
-                    <!--                    <androidx.cardview.widget.CardView-->
-                    <!--                        android:id="@+id/cardView"-->
-                    <!--                        android:layout_width="match_parent"-->
-                    <!--                        android:layout_height="340dp"-->
-                    <!--                        android:layout_marginStart="20dp"-->
-                    <!--                        android:layout_marginTop="40dp"-->
-                    <!--                        android:layout_marginEnd="30dp"-->
-                    <!--                        app:cardBackgroundColor="@color/g_blue"-->
-                    <!--                        app:cardCornerRadius="20dp"-->
-                    <!--                        app:cardElevation="15dp"-->
-                    <!--                        android:alpha="0.8"-->
-                    <!--                        app:layout_constraintEnd_toEndOf="@id/tvProfile"-->
-                    <!--                        app:layout_constraintStart_toStartOf="@id/tvProfile"-->
-                    <!--                        app:layout_constraintTop_toBottomOf="@id/tvProfile">-->
-
-                    <!--                        <ImageView-->
-                    <!--                            android:layout_width="match_parent"-->
-                    <!--                            android:layout_height="match_parent"-->
-                    <!--                            android:src="@drawable/waste_logo2"-->
-                    <!--                            android:scaleType="centerCrop"-->
-                    <!--                            android:alpha="0.3"/>-->
-
-
-                    <!--                        <androidx.constraintlayout.widget.ConstraintLayout-->
-                    <!--                            android:layout_width="match_parent"-->
-                    <!--                            android:layout_height="wrap_content">-->
-
-
-                    <!--                            <androidx.cardview.widget.CardView-->
-                    <!--                                android:id="@+id/idcard"-->
-                    <!--                                android:layout_width="100dp"-->
-                    <!--                                android:layout_height="100dp"-->
-                    <!--                                android:layout_marginStart="20dp"-->
-                    <!--                                android:layout_marginTop="20dp"-->
-                    <!--                                android:layout_marginEnd="20dp"-->
-
-                    <!--                                app:cardCornerRadius="10dp"-->
-                    <!--                                app:cardElevation="10dp"-->
-                    <!--                                app:layout_constraintDimensionRatio="1:1"-->
-                    <!--                                app:layout_constraintStart_toStartOf="parent"-->
-                    <!--                                app:layout_constraintTop_toTopOf="parent">-->
-
-                    <!--                                <ImageView-->
-                    <!--                                    android:id="@+id/bigImage"-->
-                    <!--                                    android:layout_width="match_parent"-->
-                    <!--                                    android:layout_height="match_parent"-->
-                    <!--                                    android:scaleType="fitXY"-->
-                    <!--                                    android:src="@drawable/profile" />-->
-
-
-                    <!--                            </androidx.cardview.widget.CardView>-->
-
-                    <!--                            <TextView-->
-                    <!--                                android:id="@+id/cardTitle"-->
-                    <!--                                android:layout_width="wrap_content"-->
-                    <!--                                android:layout_height="wrap_content"-->
-                    <!--                                android:layout_marginStart="12dp"-->
-                    <!--                                android:layout_marginTop="15dp"-->
-                    <!--                                android:fontFamily="@font/sf_pro_display"-->
-                    <!--                                android:text="Kenya National \n Waste Pickers \n Welfare \n Association \n ( KeNaWAPWA )"-->
-                    <!--                                android:textColor="@color/white"-->
-                    <!--                                android:textSize="18dp"-->
-                    <!--                                android:textStyle="bold"-->
-                    <!--                                app:layout_constraintStart_toEndOf="@id/idcard"-->
-                    <!--                                app:layout_constraintTop_toTopOf="parent" />-->
-
-                    <!--                            <TextView-->
-                    <!--                                android:id="@+id/cardID"-->
-                    <!--                                android:layout_width="wrap_content"-->
-                    <!--                                android:layout_height="wrap_content"-->
-                    <!--                                android:layout_marginStart="12dp"-->
-                    <!--                                android:layout_marginTop="8dp"-->
-                    <!--                                android:fontFamily="@font/sf_pro_display"-->
-                    <!--                                android:text="Member ID : WAPAK/WPR/012"-->
-                    <!--                                android:textColor="@color/white"-->
-                    <!--                                android:textSize="16dp"-->
-                    <!--                                app:layout_constraintStart_toStartOf="parent"-->
-                    <!--                                app:layout_constraintTop_toBottomOf="@id/idcard" />-->
-
-                    <!--                            <TextView-->
-                    <!--                                android:id="@+id/cardName"-->
-                    <!--                                android:layout_width="wrap_content"-->
-                    <!--                                android:layout_height="wrap_content"-->
-                    <!--                                android:layout_marginStart="12dp"-->
-                    <!--                                android:layout_marginTop="5dp"-->
-                    <!--                                android:fontFamily="@font/sf_pro_display"-->
-                    <!--                                android:text="Name: Derrick Wanjala"-->
-                    <!--                                android:textColor="@color/white"-->
-                    <!--                                android:textSize="16dp"-->
-                    <!--                                app:layout_constraintStart_toStartOf="parent"-->
-                    <!--                                app:layout_constraintTop_toBottomOf="@id/cardID" />-->
-
-                    <!--                            <TextView-->
-                    <!--                                android:id="@+id/last"-->
-                    <!--                                android:layout_width="wrap_content"-->
-                    <!--                                android:layout_height="wrap_content"-->
-                    <!--                                android:layout_marginStart="12dp"-->
-                    <!--                                android:layout_marginTop="5dp"-->
-                    <!--                                android:fontFamily="@font/sf_pro_display"-->
-                    <!--                                android:text="Name: Derrick Wanjala"-->
-                    <!--                                android:textColor="@color/white"-->
-                    <!--                                android:textSize="16dp"-->
-                    <!--                                app:layout_constraintStart_toStartOf="parent"-->
-                    <!--                                app:layout_constraintTop_toBottomOf="@id/cardName" />-->
-
-                    <!--                            <TextView-->
-                    <!--                                android:id="@+id/cardLocation"-->
-                    <!--                                android:layout_width="wrap_content"-->
-                    <!--                                android:layout_height="wrap_content"-->
-                    <!--                                android:layout_marginStart="12dp"-->
-                    <!--                                android:layout_marginTop="5dp"-->
-                    <!--                                android:fontFamily="@font/sf_pro_display"-->
-                    <!--                                android:text="County: Nairobi"-->
-                    <!--                                android:textColor="@color/white"-->
-                    <!--                                android:textSize="16dp"-->
-                    <!--                                app:layout_constraintStart_toStartOf="parent"-->
-                    <!--                                app:layout_constraintTop_toBottomOf="@id/last" />-->
-
-                    <!--                            <TextView-->
-                    <!--                                android:id="@+id/cardConst"-->
-                    <!--                                android:layout_width="wrap_content"-->
-                    <!--                                android:layout_height="wrap_content"-->
-                    <!--                                android:layout_marginStart="12dp"-->
-                    <!--                                android:layout_marginTop="5dp"-->
-                    <!--                                android:fontFamily="@font/sf_pro_display"-->
-                    <!--                                android:text=" Ward : Imara Daima"-->
-                    <!--                                android:textColor="@color/white"-->
-                    <!--                                android:textSize="16dp"-->
-                    <!--                                app:layout_constraintStart_toStartOf="parent"-->
-                    <!--                                app:layout_constraintTop_toBottomOf="@id/cardLocation" />-->
-
-                    <!--                            <TextView-->
-                    <!--                                android:id="@+id/nationalID"-->
-
-                    <!--                                android:layout_width="wrap_content"-->
-                    <!--                                android:layout_height="wrap_content"-->
-                    <!--                                android:layout_marginStart="12dp"-->
-                    <!--                                android:layout_marginTop="5dp"-->
-                    <!--                                android:fontFamily="@font/sf_pro_display"-->
-                    <!--                                android:text="National ID : 24367547"-->
-                    <!--                                android:textColor="@color/white"-->
-                    <!--                                android:textSize="16dp"-->
-                    <!--                                app:layout_constraintStart_toStartOf="parent"-->
-                    <!--                                app:layout_constraintTop_toBottomOf="@id/cardConst" />-->
-
-                    <!--                            <TextView-->
-                    <!--                                android:id="@+id/telephoneNo"-->
-                    <!--                                android:layout_width="wrap_content"-->
-                    <!--                                android:layout_height="wrap_content"-->
-                    <!--                                android:layout_marginStart="12dp"-->
-                    <!--                                android:layout_marginTop="5dp"-->
-                    <!--                                android:fontFamily="@font/sf_pro_display"-->
-                    <!--                                android:text=" Tel : 0712345678"-->
-                    <!--                                android:textColor="@color/white"-->
-                    <!--                                android:textSize="16dp"-->
-                    <!--                                app:layout_constraintStart_toStartOf="parent"-->
-                    <!--                                app:layout_constraintTop_toBottomOf="@id/nationalID" />-->
-
-
-
-                    <!--                            <androidx.cardview.widget.CardView-->
-                    <!--                                android:id="@+id/qrCode"-->
-                    <!--                                android:layout_width="60dp"-->
-                    <!--                                android:layout_height="60dp"-->
-                    <!--                                android:layout_marginStart="20dp"-->
-                    <!--                                android:layout_marginLeft="10dp"-->
-                    <!--                                android:layout_marginTop="20dp"-->
-                    <!--                                android:layout_marginEnd="20dp"-->
-                    <!--                                app:cardCornerRadius="10dp"-->
-                    <!--                                app:cardElevation="10dp"-->
-                    <!--                                app:layout_constraintBottom_toBottomOf="parent"-->
-                    <!--                                app:layout_constraintDimensionRatio="1:1"-->
-                    <!--                                app:layout_constraintEnd_toEndOf="parent"-->
-                    <!--                                app:layout_constraintTop_toTopOf="parent">-->
-
-                    <!--                                <ImageView-->
-                    <!--                                    android:layout_width="match_parent"-->
-                    <!--                                    android:layout_height="match_parent"-->
-                    <!--                                    android:scaleType="fitXY"-->
-                    <!--                                    android:src="@drawable/qr2" />-->
-
-
-                    <!--                            </androidx.cardview.widget.CardView>-->
-
-
-                    <!--                        </androidx.constraintlayout.widget.ConstraintLayout>-->
-
-
-                    <!--                    </androidx.cardview.widget.CardView>-->
-
                     <androidx.cardview.widget.CardView
                         android:id="@+id/cardView"
                         android:layout_width="match_parent"
-                        android:layout_height="340dp"
+                        android:layout_height="250dp"
                         android:layout_marginStart="5dp"
-                        android:layout_marginTop="40dp"
+                        android:layout_marginTop="60dp"
                         android:layout_marginEnd="10dp"
                         app:cardBackgroundColor="@color/white"
                         app:cardCornerRadius="20dp"
                         app:cardElevation="15dp"
                         android:alpha="0.8"
-                        app:layout_constraintEnd_toEndOf="@id/tvProfile"
-                        app:layout_constraintStart_toStartOf="@id/tvProfile"
-                        app:layout_constraintTop_toBottomOf="@id/tvProfile">
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
 
                         <ImageView
                             android:layout_width="match_parent"
@@ -643,8 +452,8 @@
 
                             <androidx.cardview.widget.CardView
                                 android:id="@+id/idcard"
-                                android:layout_width="100dp"
-                                android:layout_height="100dp"
+                                android:layout_width="80dp"
+                                android:layout_height="80dp"
                                 android:layout_marginStart="20dp"
                                 android:layout_marginTop="20dp"
                                 android:layout_marginEnd="20dp"
@@ -666,6 +475,7 @@
                             </androidx.cardview.widget.CardView>
 
                             <TextView
+                                android:layout_marginStart="10dp"
                                 android:id="@+id/cardTitle"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
@@ -731,7 +541,6 @@
 
 
                             <TextView
-                                android:layout_marginTop="10dp"
                                 android:layout_marginStart="20dp"
                                 android:id="@+id/regnotag"
                                 android:textSize="15sp"
@@ -744,7 +553,6 @@
                                 app:layout_constraintTop_toBottomOf="@id/linearLine"/>
 
                             <TextView
-                                android:layout_marginTop="10dp"
                                 android:layout_marginStart="20dp"
                                 android:id="@+id/regnotagvalue"
                                 android:textSize="15sp"
@@ -761,7 +569,6 @@
 
 
                             <TextView
-                                android:layout_marginTop="5dp"
                                 android:layout_marginStart="20dp"
                                 android:id="@+id/nametag"
                                 android:textSize="15sp"
@@ -774,7 +581,6 @@
                                 app:layout_constraintTop_toBottomOf="@id/regnotag"/>
 
                             <TextView
-                                android:layout_marginTop="5dp"
                                 android:layout_marginStart="20dp"
                                 android:id="@+id/namevalue"
                                 android:textSize="15sp"
@@ -823,7 +629,6 @@
 
 
                             <TextView
-                                android:layout_marginTop="5dp"
                                 android:layout_marginStart="20dp"
                                 android:id="@+id/idtag"
                                 android:textSize="15sp"
@@ -836,7 +641,6 @@
                                 app:layout_constraintTop_toBottomOf="@id/nametag"/>
 
                             <TextView
-                                android:layout_marginTop="5dp"
                                 android:layout_marginStart="20dp"
                                 android:id="@+id/idvalue"
                                 android:textSize="15sp"
@@ -854,7 +658,6 @@
 
 
                             <TextView
-                                android:layout_marginTop="5dp"
                                 android:layout_marginStart="20dp"
                                 android:id="@+id/teltag"
                                 android:textSize="15sp"
@@ -867,7 +670,6 @@
                                 app:layout_constraintTop_toBottomOf="@id/idtag"/>
 
                             <TextView
-                                android:layout_marginTop="5dp"
                                 android:layout_marginStart="20dp"
                                 android:id="@+id/telvalue"
                                 android:textSize="15sp"
@@ -884,7 +686,6 @@
 
 
                             <TextView
-                                android:layout_marginTop="5dp"
                                 android:layout_marginStart="20dp"
                                 android:id="@+id/countytag"
                                 android:textSize="15sp"
@@ -897,7 +698,6 @@
                                 app:layout_constraintTop_toBottomOf="@id/teltag"/>
 
                             <TextView
-                                android:layout_marginTop="5dp"
                                 android:layout_marginStart="20dp"
                                 android:id="@+id/countyvalue"
                                 android:textSize="15sp"
@@ -914,7 +714,6 @@
 
 
                             <TextView
-                                android:layout_marginTop="5dp"
                                 android:layout_marginStart="20dp"
                                 android:id="@+id/wardtag"
                                 android:textSize="15sp"
@@ -927,7 +726,6 @@
                                 app:layout_constraintTop_toBottomOf="@id/countytag"/>
 
                             <TextView
-                                android:layout_marginTop="5dp"
                                 android:layout_marginStart="20dp"
                                 android:id="@+id/wardvalue"
                                 android:textSize="15sp"
@@ -946,18 +744,33 @@
                                 android:layout_width="80dp"
                                 android:layout_height="80dp"
                                 android:src="@drawable/sign"
-                                android:layout_marginTop="20dp"
-                                app:layout_constraintTop_toBottomOf="@id/regnotag"
+                                app:layout_constraintTop_toBottomOf="@id/linearLine"
                                 app:layout_constraintStart_toStartOf="@id/guideline2"/>
 
                             <TextView
+                                android:id="@+id/holders"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Holder's Sign"
+                                android:text="Holder's Sign:"
                                 android:textColor="@color/g_red"
                                 app:layout_constraintTop_toBottomOf="@id/sign"
                                 app:layout_constraintStart_toStartOf="@id/sign"
                                 app:layout_constraintEnd_toEndOf="@id/sign"/>
+
+
+                            <LinearLayout
+                                android:id="@+id/linearLine2"
+                                android:orientation="vertical"
+                                android:layout_marginStart="20dp"
+                                android:layout_marginTop="20dp"
+                                android:layout_marginEnd="5dp"
+                                android:layout_width="130dp"
+                                android:layout_height="1dp"
+                                app:layout_constraintTop_toBottomOf="@id/holders"
+                                app:layout_constraintStart_toStartOf="@id/holders"
+                                app:layout_constraintEnd_toEndOf="@id/holders"
+
+                                android:background="@color/g_red"/>
 
 
                             <androidx.constraintlayout.widget.Guideline
@@ -965,7 +778,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:orientation="vertical"
-                                app:layout_constraintGuide_begin="83dp" />
+                                app:layout_constraintGuide_end="293dp" />
 
 
                             <androidx.constraintlayout.widget.Guideline
@@ -973,18 +786,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:orientation="vertical"
-                                app:layout_constraintGuide_begin="240dp" />
-
-
-
-
-
-
-
-
-
-
-
+                                app:layout_constraintGuide_begin="270dp" />
 
 
                         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -1009,14 +811,17 @@
                         android:layout_width="0dp"
                         android:layout_height="55dp"
                         android:fontFamily="@font/poppins_thin"
-                        android:text="Download"
+                        android:text="Preview ID"
                         android:layout_marginLeft="30dp"
                         android:layout_marginRight="50dp"
-                        android:layout_marginTop="25dp"
+                        android:layout_marginTop="40dp"
                         android:textColor="@color/white"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/cardView" />
+                        app:layout_constraintTop_toBottomOf="@+id/cardView"
+                        app:layout_constraintBottom_toBottomOf="parent"/>
+
+
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
 
