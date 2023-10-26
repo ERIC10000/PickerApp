@@ -24,8 +24,11 @@ class LoginActivity : AppCompatActivity() {
 
         val link : TextView = findViewById(R.id.Quality)
         link.setOnClickListener {
-            val intent = Intent(applicationContext , RegisterActivity::class.java)
-            startActivity(intent)
+//            val intent = Intent(applicationContext , RegisterActivity::class.java)
+//            startActivity(intent)
+            Constant.navigate(RegisterActivity() , this ){
+                startActivity(it)
+            }
         }
         val email : EditText = findViewById(R.id.emailLogin)
 
@@ -35,37 +38,32 @@ class LoginActivity : AppCompatActivity() {
 
         val progress: ProgressBar = findViewById(R.id.progress)
         login.setOnClickListener {
-            if (email.text.isEmpty() || password.text.isEmpty()){
-                Toast.makeText(applicationContext, "Please fill in all the fields", Toast.LENGTH_LONG).show()
-
-
-            }else{
-                login(email , password , progress)
-
+            if (email.text.isEmpty() || password.text.isEmpty()) {
+                Toast.makeText(
+                    applicationContext,
+                    "Please fill in all the fields",
+                    Toast.LENGTH_LONG
+                ).show()
             }
 
             else{
-                if (isEmailValid(email.text.toString())){
-                    if (isPasswordValid(password.text.toString())){
-                        login(email , password)
+
+                    if (isEmailValid(email.text.toString()) || isPhoneNumberValid(email.text.toString())){
+
+                            login(email , password , progress)
+
                     }
                     else{
-                        Toast.makeText(applicationContext, "The password entered must contain at least one symbol , must be at least 8 characters and have at least one capital letter ", Toast.LENGTH_LONG).show()
+                        Toast.makeText(applicationContext, "The input entered is in an invalid format", Toast.LENGTH_LONG).show()
                     }
 
-                }
-                else{
-                    Toast.makeText(applicationContext, "The email entered is in an invalid format", Toast.LENGTH_LONG).show()
-                }
-
-
-
             }
-        }
 
 
 
-    }
+
+        } // End setOnClickListener
+    }// End onCreate
 
     private  fun  login( email : EditText , password : EditText , progressBar: ProgressBar){
         progressBar.visibility = View.VISIBLE
@@ -88,8 +86,8 @@ class LoginActivity : AppCompatActivity() {
                 val message = result!!.getJSONObject("message")
 
                 val cardId = message!!.getString("DriverID")
-                val firstName = message.getString("First Name")
-                val lastName = message.getString("Last Name")
+                val firstName = message.getString("FirstName")
+                val lastName = message.getString("LastName")
                 val county = message.getString("County")
                 val constituency = message.getString("Constituency")
                 val idNumb = message.getInt("Idnumb")
@@ -104,8 +102,10 @@ class LoginActivity : AppCompatActivity() {
                 PrefsHelper.savePrefs(applicationContext , "idNumb",idNumb.toString())
                 PrefsHelper.savePrefs(applicationContext , "phone",phone.toString())
 
-                val intent = Intent(applicationContext , HomeActivity::class.java)
-                startActivity(intent)
+
+                Constant.navigate(HomeActivity() , applicationContext ){
+                    startActivity(it)
+                }
             }
 
             override fun onFailure(result: String?) {
@@ -138,16 +138,27 @@ class LoginActivity : AppCompatActivity() {
         return pattern.matcher(email).matches()
     }
 
-
-
-    fun isPasswordValid(password: String): Boolean {
-        val passwordRegex = "^(?=.*[A-Z])(?=.*[!@#\\$%^&*]).{8,}\$"
-        val pattern = Pattern.compile(passwordRegex)
-        return pattern.matcher(password).matches()
+    private fun isPhoneNumberValid(phoneNumber: String): Boolean {
+        val phoneRegex = "^07\\d{8}\$"
+        val pattern = Pattern.compile(phoneRegex)
+        return pattern.matcher(phoneNumber).matches()
     }
 
 
 
+//    fun isPasswordValid(password: String): Boolean {
+//        val passwordRegex = "^(?=.*[A-Z])(?=.*[!@#\\$%^&*]).{8,}\$"
+//        val pattern = Pattern.compile(passwordRegex)
+//        return pattern.matcher(password).matches()
+//    }
 
 
-}
+
+} // End class
+
+
+
+
+
+
+
