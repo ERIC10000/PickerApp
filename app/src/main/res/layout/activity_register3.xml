@@ -59,44 +59,107 @@
 
 
 
-        <EditText
+        <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/address"
-            android:layout_width="0dp"
-            android:layout_height="60dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
             app:layout_constraintStart_toStartOf="@id/guidelineLeft"
             app:layout_constraintEnd_toEndOf="@id/guidelineRight"
             app:layout_constraintTop_toBottomOf="@id/tvAppNAme"
-            style="@style/editText"
-            android:hint="Address"
-            android:layout_marginTop="50dp"/>
+            app:startIconDrawable="@drawable/baseline_location_on_24"
+            app:startIconTint="@color/g_blue"
+            app:boxBackgroundMode="outline"
+            app:boxBackgroundColor="@color/white"
+            app:counterEnabled="true"
+            app:counterMaxLength="30"
+            android:textColorHint="@color/black"
+            app:helperTextEnabled="true"
+            app:helperText="Required *"
+            app:helperTextTextColor="@color/g_blue"
+            android:hint="Enter Your Address">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/InputPlace"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textSize="16sp"
+                android:typeface="sans"
+                android:inputType="textCapWords"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
 
 
 
-        <EditText
+
+
+        <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/password"
-            app:passwordToggleEnabled="true"
-            android:layout_width="0dp"
-            android:layout_height="60dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
             app:layout_constraintStart_toStartOf="@id/guidelineLeft"
             app:layout_constraintEnd_toEndOf="@id/guidelineRight"
             app:layout_constraintTop_toBottomOf="@id/address"
-            style="@style/editText"
-            android:hint="Password"
-            android:inputType="textPassword"
-            android:layout_marginTop="30dp"/>
+            app:startIconDrawable="@drawable/baseline_lock_24"
+            app:startIconTint="@color/g_blue"
+            app:boxBackgroundMode="outline"
+            app:boxBackgroundColor="@color/white"
+            app:counterEnabled="true"
+            app:counterMaxLength="25"
+            app:endIconMode="password_toggle"
+            app:endIconTint="@color/g_blue"
+            android:textColorHint="@color/black"
+            app:helperTextEnabled="true"
+            app:helperText="Enter Password"
+            app:helperTextTextColor="@color/g_blue"
+            android:hint="Input Password">
 
-        <EditText
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/InputPassword"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textSize="16sp"
+                android:typeface="sans"
+                android:inputType="textPassword"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+
+
+        <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/password2"
-            app:passwordToggleEnabled="true"
-            android:layout_width="0dp"
-            android:layout_height="60dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
             app:layout_constraintStart_toStartOf="@id/guidelineLeft"
             app:layout_constraintEnd_toEndOf="@id/guidelineRight"
             app:layout_constraintTop_toBottomOf="@id/password"
-            style="@style/editText"
-            android:hint="Confirm Password"
-            android:inputType="textPassword"
-            android:layout_marginTop="30dp"/>
+            app:startIconDrawable="@drawable/baseline_lock_24"
+            app:startIconTint="@color/g_blue"
+            app:boxBackgroundMode="outline"
+            app:boxBackgroundColor="@color/white"
+            app:counterEnabled="true"
+            app:counterMaxLength="25"
+            app:endIconMode="password_toggle"
+            app:endIconTint="@color/g_blue"
+            android:textColorHint="@color/black"
+            app:helperTextEnabled="true"
+            app:helperText="Confirm the above Password"
+            app:helperTextTextColor="@color/g_blue"
+            android:hint="Confirm  Password">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/InputPassword2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textSize="16sp"
+                android:typeface="sans"
+                android:inputType="textPassword"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
 
         <ProgressBar
             android:id="@+id/progressBar"
@@ -120,7 +183,7 @@
             app:layout_constraintTop_toBottomOf="@id/password2"/>
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/next3"
+            android:id="@+id/complete"
             android:layout_width="200dp"
             android:layout_height="55dp"
             style="@style/blueButtonStyle"

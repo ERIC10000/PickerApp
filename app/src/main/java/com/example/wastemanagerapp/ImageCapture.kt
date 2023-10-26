@@ -144,7 +144,7 @@ class ImageCapture : AppCompatActivity() {
                 CAMERA_REQUEST_CODE -> {
 
                     val bitmap = data?.extras?.get("data") as Bitmap
-                    binding.btnImage.setOnClickListener {
+                    binding.btnNext.setOnClickListener {
                         postImageToApi(bitmap)
                         val imagePath = saveImageToFile(bitmap)
                         PrefsHelper.savePrefs(this,"image",imagePath)
@@ -162,7 +162,7 @@ class ImageCapture : AppCompatActivity() {
 
                     val uri: Uri? = data?.data
                     val bitmap = MediaStore.Images.Media.getBitmap(this.contentResolver, uri)
-                    binding.btnImage.setOnClickListener {
+                    binding.btnNext.setOnClickListener {
                         postImageToApi(bitmap)
                         val imagePath = saveImageToFile(bitmap)
                         PrefsHelper.savePrefs(this,"image",imagePath)

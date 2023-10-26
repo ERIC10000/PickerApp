@@ -5,6 +5,8 @@ import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -15,26 +17,106 @@ import androidx.appcompat.widget.AppCompatCheckBox
 import com.example.wastemanagerapp.helpers.ApiHelper
 import com.example.wastemanagerapp.helpers.Constant
 import com.example.wastemanagerapp.helpers.PrefsHelper
+import com.google.android.material.textfield.TextInputEditText
+import com.google.android.material.textfield.TextInputLayout
 import org.json.JSONArray
 import org.json.JSONObject
+import java.util.regex.Matcher
 import java.util.regex.Pattern
 
 
 class Register3 : AppCompatActivity() {
-    lateinit var address : EditText
-    lateinit var password : EditText
-    lateinit var password2 : EditText
+    lateinit var address : TextInputLayout
+    lateinit var password : TextInputLayout
+    lateinit var input_Password : TextInputEditText
+    lateinit var password2 : TextInputLayout
+    lateinit var input_Password2 : TextInputEditText
+    lateinit var input_place : TextInputEditText
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register3)
 
         address  = findViewById(R.id.address)
+        input_Password = findViewById(R.id.InputPassword)
+
         password  = findViewById(R.id.password)
+
         password2  = findViewById(R.id.password2)
 
-        val checkBox : AppCompatCheckBox = findViewById(R.id.agreement)
-        val button : AppCompatButton = findViewById(R.id.next3)
+        input_place = findViewById(R.id.InputPlace)
 
+        input_Password2 = findViewById(R.id.InputPassword2)
+
+        input_Password.addTextChangedListener(object : TextWatcher{
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+
+            }
+
+            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                val passwordInput : String = p0.toString()
+                if (passwordInput.length >= 8){
+                    val pattern : Pattern = Pattern.compile("[^a-zA-Z0-9]")
+                    val matcher : Matcher = pattern.matcher(passwordInput)
+                    val passwordsMatch : Boolean = matcher.find()
+                    if (passwordsMatch){
+                        password.helperText = "Your Password is Strong "
+                        password.error = ""
+
+                    }else{
+                        password.error = "Use mix of upper and lower case , number and symbols "
+
+                    }
+
+
+                }
+                else{
+                    password.helperText = "Password must be 8 characters long"
+                    password.error = ""
+                }
+
+            }
+
+            override fun afterTextChanged(p0: Editable?) {
+
+            }
+        })
+
+        input_Password2.addTextChangedListener(object : TextWatcher{
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+
+            }
+
+            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                val passwordInput : String = p0.toString()
+                if (passwordInput == input_Password.text.toString()){
+
+                        password2.helperText = "Your Passwords match "
+                        password2.error = ""
+
+                }
+                else if (passwordInput.isEmpty()){
+
+                    password2.helperText = "Confirm your password "
+                    password2.error = ""
+
+
+                }
+                else {
+                    password2.error = "Your Passwords do not match"
+                }
+
+            }
+
+            override fun afterTextChanged(p0: Editable?) {
+
+            }
+        })
+
+        val checkBox : AppCompatCheckBox = findViewById(R.id.agreement)
+        val button : AppCompatButton = findViewById(R.id.complete)
+
+
+        button.isEnabled = false
 
         checkBox.setOnCheckedChangeListener { _, isChecked ->
 
@@ -45,11 +127,34 @@ class Register3 : AppCompatActivity() {
             alertDialog.setView(view)
 
             // radio button implementation here...
+            val acceptRadio = view.findViewById<RadioButton>(R.id.accept)
+            val declineRadio = view.findViewById<RadioButton>(R.id.decline)
+
+            alertDialog.show()
+
+            acceptRadio.setOnCheckedChangeListener { _, isChecked ->
+                if (isChecked) {
+                    // Accept button selected, dismiss the dialog
+                    alertDialog.dismiss()
+                    button.isEnabled = true
+                }
+            }
+
+            declineRadio.setOnCheckedChangeListener { _, isChecked ->
+                if (isChecked) {
+                    // Decline button selected, handle the action to go to the main activity
+                    alertDialog.dismiss()
+                    // Add code here to start the main activity
+                    Constant.navigate(IntroductionActivity(),this ){
+                        startActivity(intent)
+                    }
+                }
+            }
 
 
             alertDialog.show()
 
-            button.isEnabled = isChecked
+
 
         }
 
@@ -63,9 +168,9 @@ class Register3 : AppCompatActivity() {
 
         val progressBar = findViewById<ProgressBar>(R.id.progressBar)
 
-        val next : TextView =  findViewById(R.id.next3)
+        val next : AppCompatButton =  findViewById(R.id.complete)
         next.setOnClickListener {
-            if (address.text.isEmpty() || password.text.isEmpty()) {
+            if (input_place.text?.isEmpty() == true || input_Password.text?.isEmpty() == true) {
                 Toast.makeText(
                     applicationContext,
                     "Please fill in all the fields",
@@ -73,7 +178,7 @@ class Register3 : AppCompatActivity() {
                 ).show()
 
             } else {
-                if (password.text.toString() != password2.text.toString()) {
+                if (input_Password.text.toString() != input_Password2.text.toString()) {
                     Toast.makeText(
                         applicationContext,
                         "Your Password do not match",
@@ -92,7 +197,7 @@ class Register3 : AppCompatActivity() {
                     )
                     notifyAndUpdate(firstName, lastName, mobileNumber, "500", county)
 
-                    if (password.text.toString() != password2.text.toString()) {
+                    if (input_Password.text.toString() != input_Password2.text.toString()) {
                         Toast.makeText(
                             applicationContext,
                             "Your Password do not match",
@@ -132,8 +237,8 @@ class Register3 : AppCompatActivity() {
         body.put("mobileNumber",mobileNumber)
         body.put("email",email)
         body.put("idNumb",idNumb)
-        body.put("address",address.text.toString())
-        body.put("password",password.text.toString())
+        body.put("address",input_place.text.toString())
+        body.put("password",input_Password.text.toString())
 
         helper.post(api , body , object: ApiHelper.CallBack{
             override fun onSuccess(result: JSONArray?) {
@@ -178,7 +283,7 @@ class Register3 : AppCompatActivity() {
         val helper = ApiHelper(this)
         val body = JSONObject()
         body.put("phone",phone)
-        body.put("amount","500")
+        body.put("amount","100")
         helper.post(api , body , object:ApiHelper.CallBack{
             override fun onSuccess(result: JSONArray?) {
 

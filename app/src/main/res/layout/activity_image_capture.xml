@@ -65,16 +65,7 @@
 
     </LinearLayout>
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:padding="8dp"
-        style="@style/blueButtonStyle"
-        android:layout_width="wrap_content"
-        android:id="@+id/btnImage"
-        android:layout_gravity="center"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
 
-        android:text="Choose Image"/>
     <ProgressBar
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
