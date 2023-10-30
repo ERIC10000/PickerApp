@@ -118,7 +118,7 @@ class HomeFragment : Fragment() {
         val cardLocation : TextView = root.findViewById(R.id.countyvalue)
         val county = PrefsHelper.getPrefs(requireContext(), "county")
 
-        cardLocation.text = " $county"
+        cardLocation.text = "   $county"
 
         val cardConst : TextView = root.findViewById(R.id.wardvalue)
         val constituency = PrefsHelper.getPrefs(requireContext(), "constituency")
@@ -126,7 +126,7 @@ class HomeFragment : Fragment() {
         cardConst.text = " $constituency"
 
         val nationalId : TextView = root.findViewById(R.id.idvalue)
-        val idNumb = PrefsHelper.getPrefs(requireContext(), "idNumb")
+        val idNumb = PrefsHelper.getPrefs(requireContext(), "idNumb").toInt()
 
         nationalId.text = " $idNumb"
 

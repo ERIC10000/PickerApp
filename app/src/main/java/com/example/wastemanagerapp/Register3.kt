@@ -258,10 +258,41 @@ class Register3 : AppCompatActivity() {
                 val view =
                     LayoutInflater.from(this@Register3).inflate(R.layout.payment_alert_dialog, null, false)
                 alertDialog.setView(view)
-                val phone = view.findViewById<EditText>(R.id.emailLogin1)
+                val phone = view.findViewById<TextInputLayout>(R.id.emailLogin1)
+                val inputNumber = view.findViewById<TextInputEditText>(R.id.InputNumber)
+                val pay = view.findViewById<Button>(R.id.pay)
 
-                view.findViewById<Button>(R.id.pay).setOnClickListener {
-                    mpesaPayment(phone.text.toString())
+                inputNumber.addTextChangedListener(object : TextWatcher{
+                    override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+
+                    }
+
+                    override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                        val numberInput : String = p0.toString()
+                        if (isPhoneNumberValid(numberInput) ){
+                            phone.helperText = "The Phone Number is valid"
+                            phone.error = ""
+                            pay.isEnabled = true
+                        }
+                        else if (numberInput.isEmpty()){
+                            phone.helperText = "Enter the phone number "
+                            phone.error = ""
+
+                        }
+                        else {
+                            phone.helperText = ""
+                            phone.error = "The phone number format entered is invalid"
+                            pay.isEnabled = false
+                        }
+                    }
+
+                    override fun afterTextChanged(p0: Editable?) {
+
+                    }
+                })
+
+                pay.setOnClickListener {
+                    mpesaPayment("254" + inputNumber.text.toString())
 
                     alertDialog.dismiss()
                 }
@@ -351,6 +382,12 @@ class Register3 : AppCompatActivity() {
 //            return pattern.matcher(password).matches()
 //
 //        }
+
+    private fun isPhoneNumberValid(phoneNumber: String): Boolean {
+        val phoneRegex = "^[71]\\d{8}\$"
+        val pattern = Pattern.compile(phoneRegex)
+        return pattern.matcher(phoneNumber).matches()
+    }
 
 
 

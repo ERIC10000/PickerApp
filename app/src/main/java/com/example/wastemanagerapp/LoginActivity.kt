@@ -13,6 +13,8 @@ import androidx.appcompat.widget.AppCompatButton
 import com.example.wastemanagerapp.helpers.ApiHelper
 import com.example.wastemanagerapp.helpers.Constant
 import com.example.wastemanagerapp.helpers.PrefsHelper
+import com.google.android.material.textfield.TextInputEditText
+import com.google.android.material.textfield.TextInputLayout
 import org.json.JSONArray
 import org.json.JSONObject
 import java.util.regex.Pattern
@@ -30,15 +32,20 @@ class LoginActivity : AppCompatActivity() {
                 startActivity(it)
             }
         }
-        val email : EditText = findViewById(R.id.emailLogin)
+        val email : TextInputLayout = findViewById(R.id.emailLogin)
+        val emailLogin : TextInputEditText = findViewById(R.id.InputLogin)
 
-        val password : EditText = findViewById(R.id.passwordLogin)
+        val password : TextInputLayout = findViewById(R.id.passwordLogin)
+        val passwordLogin : TextInputEditText = findViewById(R.id.InputPasswordLogin)
 
         val login: AppCompatButton = findViewById(R.id.btn_login)
 
         val progress: ProgressBar = findViewById(R.id.progress)
+
+
+
         login.setOnClickListener {
-            if (email.text.isEmpty() || password.text.isEmpty()) {
+            if (emailLogin.text?.isEmpty() == true || passwordLogin.text?.isEmpty() == true) {
                 Toast.makeText(
                     applicationContext,
                     "Please fill in all the fields",
@@ -48,9 +55,9 @@ class LoginActivity : AppCompatActivity() {
 
             else{
 
-                    if (isEmailValid(email.text.toString()) || isPhoneNumberValid(email.text.toString())){
+                    if (isEmailValid(emailLogin.text.toString()) || isPhoneNumberValid(emailLogin.text.toString())){
 
-                            login(email , password , progress)
+                            login(emailLogin , passwordLogin , progress)
 
                     }
                     else{
@@ -65,7 +72,7 @@ class LoginActivity : AppCompatActivity() {
         } // End setOnClickListener
     }// End onCreate
 
-    private  fun  login( email : EditText , password : EditText , progressBar: ProgressBar){
+    private  fun  login( email : TextInputEditText , password : TextInputEditText , progressBar: ProgressBar){
         progressBar.visibility = View.VISIBLE
         val helper = ApiHelper(this)
         val api = Constant.BASE_URL + "/picker_login"
