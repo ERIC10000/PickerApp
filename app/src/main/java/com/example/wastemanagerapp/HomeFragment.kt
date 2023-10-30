@@ -26,6 +26,7 @@ import androidx.cardview.widget.CardView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.drawerlayout.widget.DrawerLayout
 import com.bumptech.glide.Glide
+import com.example.wastemanagerapp.helpers.Constant
 import com.example.wastemanagerapp.helpers.PrefsHelper
 import com.itextpdf.io.image.ImageDataFactory
 import com.itextpdf.kernel.pdf.PdfDocument
@@ -67,9 +68,10 @@ class HomeFragment : Fragment() {
         // close Drawer
         val cardCloseDrawer: LinearLayout = root.findViewById(R.id.closeDrawer)
         cardCloseDrawer.setOnClickListener {
-            Toast.makeText(requireContext(), "OK", Toast.LENGTH_SHORT).show()
-            val drawer : ConstraintLayout = root.findViewById(R.id.drawerId)
-            drawer.visibility = View.VISIBLE
+//            Toast.makeText(requireContext(), "OK", Toast.LENGTH_SHORT).show()
+            Constant.navigate( IntroductionActivity(),requireContext()){
+                startActivity(it)
+            }
         }
 
         // change Password Dialog
@@ -168,6 +170,27 @@ class HomeFragment : Fragment() {
             startActivity(intent)
 
 
+        }
+
+        val profileImage = view?.findViewById<ImageView>(R.id.profileImage)
+        val imagePath2 = PrefsHelper.getPrefs(requireContext() , "image")
+
+        val name = view?.findViewById<TextView>(R.id.name)
+
+
+        if (name != null) {
+            name.text = firstName + "" + lastName
+        }
+
+        val county2 = view?.findViewById<TextView>(R.id.county)
+        if (county2 != null) {
+            county2.text = "County: $county"
+        }
+
+        if (profileImage != null) {
+            Glide.with(this)
+                .load(imagePath2)
+                .into(profileImage)
         }
 
         return  root

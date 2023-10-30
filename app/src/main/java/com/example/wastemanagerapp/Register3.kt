@@ -322,7 +322,7 @@ class Register3 : AppCompatActivity() {
 
             override fun onSuccess(result: JSONObject?) {
                 Toast.makeText(applicationContext, result.toString(), Toast.LENGTH_SHORT).show()
-                val intent = Intent(applicationContext, LoginActivity::class.java)
+                val intent = Intent(applicationContext, HomeActivity::class.java)
                 intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                 startActivity(intent)
             }

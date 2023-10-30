@@ -269,7 +269,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Close"
+                            android:text="Log out"
                             android:textSize="16sp"
                             android:textColor="@color/black"
                             android:layout_marginStart="10dp"/>
@@ -296,7 +296,7 @@
         android:layout_height="match_parent"
         android:background="@drawable/bg"
         android:tag="content"
-        android:visibility="visible">
+        android:visibility="gone">
 
         <FrameLayout
             android:layout_width="match_parent"
