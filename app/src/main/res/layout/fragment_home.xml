@@ -296,7 +296,7 @@
         android:layout_height="match_parent"
         android:background="@drawable/bg"
         android:tag="content"
-        android:visibility="gone">
+        android:visibility="visible">
 
         <FrameLayout
             android:layout_width="match_parent"
