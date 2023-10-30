@@ -92,7 +92,8 @@ class LoginActivity : AppCompatActivity() {
 
                 val message = result!!.getJSONObject("message")
 
-                val cardId = message!!.getString("DriverID")
+
+                val cardId = message.getString("DriverID")
                 val firstName = message.getString("FirstName")
                 val lastName = message.getString("LastName")
                 val county = message.getString("County")
@@ -117,8 +118,8 @@ class LoginActivity : AppCompatActivity() {
 
             override fun onFailure(result: String?) {
                 progressBar.visibility = View.GONE
-                Log.d("Hapa",result.toString())
-                Toast.makeText(applicationContext, "An error occurred", Toast.LENGTH_SHORT).show()
+
+                Toast.makeText(applicationContext, result, Toast.LENGTH_SHORT).show()
             }
         })
 
