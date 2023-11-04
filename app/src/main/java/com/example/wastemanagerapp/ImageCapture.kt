@@ -44,7 +44,7 @@ class ImageCapture : AppCompatActivity() {
 
 
         binding.btnNext.setOnClickListener {
-            val intent = Intent(applicationContext , RegisterActivity::class.java)
+            val intent = Intent(applicationContext , HomeActivity::class.java)
             startActivity(intent)
         }
         binding.btnCamera.setOnClickListener {
@@ -210,6 +210,8 @@ class ImageCapture : AppCompatActivity() {
             val imageFile = createImageFile(bitmap)
 
             requestParams.put("File", imageFile)
+            val id = PrefsHelper.getPrefs(this , "id")
+            requestParams.put("json_payload" , "{\"id\":\"$id\"}")
         } catch (e: IOException) {
             e.printStackTrace()
         }

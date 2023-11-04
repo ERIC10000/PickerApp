@@ -26,6 +26,7 @@ import androidx.cardview.widget.CardView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.drawerlayout.widget.DrawerLayout
 import com.bumptech.glide.Glide
+import com.example.wastemanagerapp.helpers.ApiHelper
 import com.example.wastemanagerapp.helpers.Constant
 import com.example.wastemanagerapp.helpers.PrefsHelper
 import com.itextpdf.io.image.ImageDataFactory
@@ -35,6 +36,8 @@ import com.itextpdf.kernel.pdf.PdfWriter
 import com.itextpdf.layout.Document
 
 import com.itextpdf.layout.element.Image
+import org.json.JSONArray
+import org.json.JSONObject
 
 import java.io.ByteArrayOutputStream
 import java.io.File
@@ -42,7 +45,7 @@ import java.io.File
 
 class HomeFragment : Fragment() {
 
-
+    val IMAGE_URL = "https://www.pythonanywhere.com/user/pickerapp/files"
 
 
     override fun onCreateView(
@@ -53,7 +56,9 @@ class HomeFragment : Fragment() {
 
 
 
+        getImage()
         val root =  inflater.inflate(R.layout.fragment_home, container, false)
+
 
         // open Drawer
         val cardOpenDrawer: CardView = root.findViewById(R.id.cardOpenDrawer)
@@ -63,6 +68,12 @@ class HomeFragment : Fragment() {
         }
 
 
+        var link : TextView = root.findViewById(R.id.profile)
+        link.setOnClickListener {
+            Constant.navigate(ImageCapture() , requireContext()){
+                startActivity(it)
+            }
+        }
 
 
         // close Drawer
@@ -94,14 +105,14 @@ class HomeFragment : Fragment() {
         val image1 : ImageView = root.findViewById(R.id.smallImage)
         val image2 : ImageView = root.findViewById(R.id.bigImage)
 
-        val imagePath = PrefsHelper.getPrefs(requireContext() , "image")
+        val imagePath = PrefsHelper.getPrefs(requireContext() , "stan")
 
         Glide.with(this)
-            .load(imagePath)
+            .load(IMAGE_URL + imagePath)
             .into(image1)
 
         Glide.with(this)
-            .load(imagePath)
+            .load(IMAGE_URL + imagePath)
             .into(image2)
 
 
@@ -208,6 +219,29 @@ class HomeFragment : Fragment() {
         val outputStream = ByteArrayOutputStream()
         bitmap.compress(Bitmap.CompressFormat.PNG, 100, outputStream)
         return outputStream.toByteArray()
+    }
+
+    private fun getImage(){
+        val api = Constant.BASE_URL + "/get_image"
+        val helper = ApiHelper(requireContext())
+        val body = JSONObject()
+        val id = PrefsHelper.getPrefs(requireContext() , "id").toInt()
+        body.put("id" , id)
+        helper.post(api , body , object : ApiHelper.CallBack{
+            override fun onSuccess(result: JSONArray?) {
+
+            }
+
+            override fun onSuccess(result: JSONObject?) {
+                Toast.makeText(requireContext(), result.toString(), Toast.LENGTH_SHORT).show()
+                val image_path = result!!.getString("image_path")
+                PrefsHelper.savePrefs(requireContext() , "stan" , image_path)
+            }
+
+            override fun onFailure(result: String?) {
+                Toast.makeText(requireContext(), result.toString(), Toast.LENGTH_SHORT).show()
+            }
+        })
     }
 
 }

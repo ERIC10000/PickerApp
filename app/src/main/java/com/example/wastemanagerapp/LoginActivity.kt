@@ -93,6 +93,7 @@ class LoginActivity : AppCompatActivity() {
                 val message = result!!.getJSONObject("message")
 
 
+                val id = message.getInt("ID")
                 val cardId = message.getString("DriverID")
                 val firstName = message.getString("FirstName")
                 val lastName = message.getString("LastName")
@@ -102,6 +103,7 @@ class LoginActivity : AppCompatActivity() {
                 val phone = message.getInt("MobileNumber")
 
 
+                PrefsHelper.savePrefs(applicationContext , "id" , id.toString())
                 PrefsHelper.savePrefs(applicationContext , "cardId",cardId)
                 PrefsHelper.savePrefs(applicationContext , "firstName", firstName)
                 PrefsHelper.savePrefs(applicationContext , "lastName", lastName)

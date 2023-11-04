@@ -12,7 +12,7 @@ class AccountOptionsActivity : AppCompatActivity() {
 
         val register : AppCompatButton = findViewById(R.id.btn_register)
         register.setOnClickListener {
-            val intent = Intent(applicationContext,ImageCapture::class.java)
+            val intent = Intent(applicationContext,RegisterActivity::class.java)
             startActivity(intent)
         }
 
