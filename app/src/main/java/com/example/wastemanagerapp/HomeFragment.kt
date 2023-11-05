@@ -17,6 +17,7 @@ import android.widget.EditText
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.ProgressBar
+import android.widget.RadioButton
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
@@ -29,6 +30,8 @@ import com.bumptech.glide.Glide
 import com.example.wastemanagerapp.helpers.ApiHelper
 import com.example.wastemanagerapp.helpers.Constant
 import com.example.wastemanagerapp.helpers.PrefsHelper
+import com.google.android.material.textfield.TextInputEditText
+import com.google.android.material.textfield.TextInputLayout
 import com.itextpdf.io.image.ImageDataFactory
 import com.itextpdf.kernel.pdf.PdfDocument
 import com.itextpdf.kernel.pdf.PdfName.Document
@@ -46,15 +49,11 @@ import java.io.File
 class HomeFragment : Fragment() {
 
     val IMAGE_URL = "https://www.pythonanywhere.com/user/pickerapp/files"
-
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-
-
 
         getImage()
         val root =  inflater.inflate(R.layout.fragment_home, container, false)
@@ -63,8 +62,7 @@ class HomeFragment : Fragment() {
         // open Drawer
         val cardOpenDrawer: CardView = root.findViewById(R.id.cardOpenDrawer)
         cardOpenDrawer.setOnClickListener {
-            val drawer : ConstraintLayout = root.findViewById(R.id.drawerId)
-            drawer.visibility = View.GONE
+            Toast.makeText(requireContext(), "Swipe to Right to Open Dashboard", Toast.LENGTH_SHORT).show()
         }
 
 
@@ -79,11 +77,22 @@ class HomeFragment : Fragment() {
         // close Drawer
         val cardCloseDrawer: LinearLayout = root.findViewById(R.id.closeDrawer)
         cardCloseDrawer.setOnClickListener {
-//            Toast.makeText(requireContext(), "OK", Toast.LENGTH_SHORT).show()
             Constant.navigate( IntroductionActivity(),requireContext()){
                 startActivity(it)
             }
         }
+
+
+        // change Photo Intent
+        val changePhoto: LinearLayout = root.findViewById(R.id.changePhoto)
+        changePhoto.setOnClickListener {
+            Constant.navigate( ImageCapture(),requireContext()){
+                startActivity(it)
+            }
+        }
+
+
+
 
         // change Password Dialog
         val changePassDialog: LinearLayout = root.findViewById(R.id.changePassword)
@@ -99,6 +108,56 @@ class HomeFragment : Fragment() {
 
 
             alertDialog.show()
+        }
+
+
+        // contribution dialog
+
+        val contributionDialog: LinearLayout = root.findViewById(R.id.contributions)
+        contributionDialog.setOnClickListener {
+
+            val alertDialog = AlertDialog.Builder(requireActivity()).create()
+            alertDialog.setTitle("")
+            val view =
+                LayoutInflater.from(requireActivity()).inflate(R.layout.contribution_dialog, null, false)
+            alertDialog.setView(view)
+
+            // radio button implementation here...
+
+            // radio button implementation here...
+            val contribute = view.findViewById<AppCompatButton>(R.id.contribute)
+            val dismiss = view.findViewById<AppCompatButton>(R.id.dismiss)
+
+
+            alertDialog.show()
+
+
+            // make contributions
+            contribute.setOnClickListener {
+
+                val alertDialog = AlertDialog.Builder(requireContext()).create()
+                alertDialog.setTitle("")
+                val view =
+                    LayoutInflater.from(requireContext()).inflate(R.layout.payment_alert_dialog, null, false)
+                alertDialog.setView(view)
+                val phone = view.findViewById<TextInputLayout>(R.id.emailLogin1)
+                val inputNumber = view.findViewById<TextInputEditText>(R.id.InputNumber)
+                val pay = view.findViewById<Button>(R.id.pay)
+
+                pay.setOnClickListener {
+                    Toast.makeText(requireContext(), "To be Added Soon...", Toast.LENGTH_SHORT).show()
+                    // contribution implementation here...
+                }
+
+
+            }
+
+
+
+            // decline
+            dismiss.setOnClickListener {
+                alertDialog.dismiss()
+            }
         }
 
 
